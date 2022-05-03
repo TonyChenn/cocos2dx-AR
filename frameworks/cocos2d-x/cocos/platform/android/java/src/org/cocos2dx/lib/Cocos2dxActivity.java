@@ -69,6 +69,7 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
     private Cocos2dxVideoHelper mVideoHelper = null;
     private Cocos2dxWebViewHelper mWebViewHelper = null;
     private Cocos2dxEditBoxHelper mEditBoxHelper = null;
+    private Cocos2dxCameraHelper mCameraViewHelper = null;
     private boolean hasFocus = false;
     private boolean showVirtualButton = false;
     private boolean gainAudioFocus = false;
@@ -159,6 +160,10 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
 
         if(mEditBoxHelper == null){
             mEditBoxHelper = new Cocos2dxEditBoxHelper(mFrameLayout);
+        }
+
+        if(mCameraViewHelper == null){
+            mCameraViewHelper = new Cocos2dxCameraHelper(mFrameLayout);
         }
 
         Window window = this.getWindow();
