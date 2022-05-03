@@ -1,6 +1,7 @@
 /****************************************************************************
  Copyright (C) 2013 Henry van Merode. All rights reserved.
- Copyright (c) 2015 Chukong Technologies Inc.
+ Copyright (c) 2015-2016 Chukong Technologies Inc.
+ Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
  
  http://www.cocos2d-x.org
  
@@ -141,7 +142,7 @@ void PUBeamRender::particleEmitted( PUParticleSystem3D* particleSystem, PUPartic
     }
 }
 
-void PUBeamRender::particleExpired( PUParticleSystem3D* particleSystem, PUParticle3D* particle )
+void PUBeamRender::particleExpired( PUParticleSystem3D* /*particleSystem*/, PUParticle3D* particle )
 {
     if (particle->visualData)
     {
@@ -285,7 +286,7 @@ void PUBeamRender::unPrepare()
     destroyAll();
 }
 
-void PUBeamRender::updateRender( PUParticle3D *particle, float deltaTime, bool firstParticle )
+void PUBeamRender::updateRender( PUParticle3D *particle, float deltaTime, bool /*firstParticle*/ )
 {
     if (!particle->visualData)
         return;

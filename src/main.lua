@@ -1,7 +1,9 @@
 
 cc.FileUtils:getInstance():setPopupNotify(false)
 cc.FileUtils:getInstance():addSearchPath("src/")
-cc.FileUtils:getInstance():addSearchPath("res/")
+
+local breakSocketHandle,debugXpCall = require("LuaDebugjit")("localhost",7003)
+cc.Director:getInstance():getScheduler():scheduleScriptFunc(breakSocketHandle, 0.3, false)
 
 require "config"
 require "cocos.init"

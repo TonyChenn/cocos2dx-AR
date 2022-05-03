@@ -1,0 +1,24 @@
+Executable : D:\software\AndroidSDK\cmake\3.18.1\bin\cmake.exe
+arguments : 
+-HE:\GitHub\cocos2dx-AR
+-DCMAKE_SYSTEM_NAME=Android
+-DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+-DCMAKE_SYSTEM_VERSION=16
+-DANDROID_PLATFORM=android-16
+-DANDROID_ABI=armeabi-v7a
+-DCMAKE_ANDROID_ARCH_ABI=armeabi-v7a
+-DANDROID_NDK=D:\software\android-ndk-r13b
+-DCMAKE_ANDROID_NDK=D:\software\android-ndk-r13b
+-DCMAKE_TOOLCHAIN_FILE=D:\software\android-ndk-r13b\build\cmake\android.toolchain.cmake
+-DCMAKE_MAKE_PROGRAM=D:\software\AndroidSDK\cmake\3.18.1\bin\ninja.exe
+-DCMAKE_CXX_FLAGS=-frtti -fexceptions -fsigned-char
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=E:\GitHub\cocos2dx-AR\frameworks\runtime-src\proj.android\app\build\intermediates\cxx\Debug\nx1l6i33\obj\armeabi-v7a
+-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=E:\GitHub\cocos2dx-AR\frameworks\runtime-src\proj.android\app\build\intermediates\cxx\Debug\nx1l6i33\obj\armeabi-v7a
+-DCMAKE_BUILD_TYPE=Debug
+-BE:\GitHub\cocos2dx-AR\frameworks\runtime-src\proj.android\app\.cxx\Debug\nx1l6i33\armeabi-v7a
+-GNinja
+-DANDROID_STL=c++_static
+-DANDROID_TOOLCHAIN=clang
+-DANDROID_ARM_NEON=TRUE
+jvmArgs : 
+

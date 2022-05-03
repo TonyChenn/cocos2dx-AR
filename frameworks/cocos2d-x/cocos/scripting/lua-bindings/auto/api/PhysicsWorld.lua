@@ -19,11 +19,13 @@
 -- @return array_table#array_table ret (return value: array_table)
         
 --------------------------------
--- Get the debug draw mask.<br>
--- return An integer number.
--- @function [parent=#PhysicsWorld] getDebugDrawMask 
+-- set the number of update of the physics world in a second.<br>
+-- 0 - disable fixed step system<br>
+-- default value is 0
+-- @function [parent=#PhysicsWorld] setFixedUpdateRate 
 -- @param self
--- @return int#int ret (return value: int)
+-- @param #int updatesPerSecond
+-- @return PhysicsWorld#PhysicsWorld self (return value: cc.PhysicsWorld)
         
 --------------------------------
 -- set the number of substeps in an update of the physics world.<br>
@@ -63,11 +65,32 @@
 -- @return PhysicsWorld#PhysicsWorld self (return value: cc.PhysicsWorld)
         
 --------------------------------
+-- Get the debug draw mask.<br>
+-- return An integer number.
+-- @function [parent=#PhysicsWorld] getDebugDrawMask 
+-- @param self
+-- @return int#int ret (return value: int)
+        
+--------------------------------
+-- set the callback which invoked before update of each object in physics world.
+-- @function [parent=#PhysicsWorld] setPreUpdateCallback 
+-- @param self
+-- @param #function callback
+-- @return PhysicsWorld#PhysicsWorld self (return value: cc.PhysicsWorld)
+        
+--------------------------------
 -- Get the auto step of this physics world.<br>
 -- return A bool object.
 -- @function [parent=#PhysicsWorld] isAutoStep 
 -- @param self
 -- @return bool#bool ret (return value: bool)
+        
+--------------------------------
+-- set the callback which invoked after update of each object in physics world.
+-- @function [parent=#PhysicsWorld] setPostUpdateCallback 
+-- @param self
+-- @param #function callback
+-- @return PhysicsWorld#PhysicsWorld self (return value: cc.PhysicsWorld)
         
 --------------------------------
 -- @overload self, int         
@@ -136,6 +159,12 @@
 -- @param self
 -- @param #int rate
 -- @return PhysicsWorld#PhysicsWorld self (return value: cc.PhysicsWorld)
+        
+--------------------------------
+--  get the number of substeps 
+-- @function [parent=#PhysicsWorld] getFixedUpdateRate 
+-- @param self
+-- @return int#int ret (return value: int)
         
 --------------------------------
 -- Get the number of substeps of this physics world.<br>

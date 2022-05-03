@@ -1,6 +1,7 @@
 /****************************************************************************
  Copyright (C) 2013 Henry van Merode. All rights reserved.
- Copyright (c) 2015 Chukong Technologies Inc.
+ Copyright (c) 2015-2016 Chukong Technologies Inc.
+ Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
  
  http://www.cocos2d-x.org
  
@@ -80,9 +81,9 @@ public:
 
     /** 
         */
-    const PUComparisionOperator getComparePositionX(void) const {return _comparePositionX;};
-    const PUComparisionOperator getComparePositionY(void) const {return _comparePositionY;};
-    const PUComparisionOperator getComparePositionZ(void) const {return _comparePositionZ;};
+    PUComparisionOperator getComparePositionX() const {return _comparePositionX;};
+    PUComparisionOperator getComparePositionY() const {return _comparePositionY;};
+    PUComparisionOperator getComparePositionZ() const {return _comparePositionZ;};
 
     virtual void copyAttributesTo (PUObserver* observer) override;
 

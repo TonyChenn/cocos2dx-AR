@@ -1,7 +1,8 @@
 /****************************************************************************
 Copyright (c) 2011      Erawppa
 Copyright (c) 2010-2012 cocos2d-x.org
-Copyright (c) 2013-2015 Chukong Technologies Inc.
+Copyright (c) 2013-2016 Chukong Technologies Inc.
+Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
 http://www.cocos2d-x.org
 
@@ -116,7 +117,7 @@ public:
      *  @note Only supports Lua Binding now.
      *  @return The script handle.
      */
-    inline int getScriptHandler() const { return _scriptHandler; };
+    int getScriptHandler() const { return _scriptHandler; }
     
     /** @brief Gets observer script handler.
      *  @param name The name of this notification.

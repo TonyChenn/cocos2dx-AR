@@ -1,6 +1,7 @@
 /****************************************************************************
 Copyright (c) 2010      cocos2d-x.org
-Copyright (c) 2013-2014 Chukong Technologies Inc.
+Copyright (c) 2013-2016 Chukong Technologies Inc.
+Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
 http://www.cocos2d-x.org
 
@@ -25,15 +26,23 @@ THE SOFTWARE.
 
 #include "base/ccUtils.h"
 
+#include <cmath>
 #include <stdlib.h>
+#include "md5/md5.h"
 
 #include "base/CCDirector.h"
 #include "base/CCAsyncTaskPool.h"
 #include "base/CCEventDispatcher.h"
+#include "base/base64.h"
+#include "base/ccUTF8.h"
 #include "renderer/CCCustomCommand.h"
 #include "renderer/CCRenderer.h"
+#include "renderer/CCTextureCache.h"
+
 #include "platform/CCImage.h"
 #include "platform/CCFileUtils.h"
+#include "2d/CCSprite.h"
+#include "2d/CCRenderTexture.h"
 
 NS_CC_BEGIN
 
@@ -116,13 +125,13 @@ void onCaptureScreen(const std::function<void(bool, const std::string&)>& afterC
             }
             else
             {
-                CCASSERT(filename.find("/") == std::string::npos, "The existence of a relative path is not guaranteed!");
+                CCASSERT(filename.find('/') == std::string::npos, "The existence of a relative path is not guaranteed!");
                 outputFile = FileUtils::getInstance()->getWritablePath() + filename;
             }
 
             // Save image in AsyncTaskPool::TaskType::TASK_IO thread, and call afterCaptured in mainThread
             static bool succeedSaveToFile = false;
-            std::function<void(void*)> mainThread = [afterCaptured, outputFile](void* param)
+            std::function<void(void*)> mainThread = [afterCaptured, outputFile](void* /*param*/)
             {
                 if (afterCaptured)
                 {
@@ -131,7 +140,7 @@ void onCaptureScreen(const std::function<void(bool, const std::string&)>& afterC
                 startedCapture = false;
             };
 
-            AsyncTaskPool::getInstance()->enqueue(AsyncTaskPool::TaskType::TASK_IO, mainThread, (void*)NULL, [image, outputFile]()
+            AsyncTaskPool::getInstance()->enqueue(AsyncTaskPool::TaskType::TASK_IO, std::move(mainThread), nullptr, [image, outputFile]()
             {
                 succeedSaveToFile = image->saveToFile(outputFile);
                 delete image;
@@ -163,13 +172,56 @@ void captureScreen(const std::function<void(bool, const std::string&)>& afterCap
     }
     s_captureScreenCommand.init(std::numeric_limits<float>::max());
     s_captureScreenCommand.func = std::bind(onCaptureScreen, afterCaptured, filename);
-    s_captureScreenListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(Director::EVENT_AFTER_DRAW, [](EventCustom *event) {
+    s_captureScreenListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(Director::EVENT_AFTER_DRAW, [](EventCustom* /*event*/) {
         auto director = Director::getInstance();
         director->getEventDispatcher()->removeEventListener((EventListener*)(s_captureScreenListener));
         s_captureScreenListener = nullptr;
         director->getRenderer()->addCommand(&s_captureScreenCommand);
         director->getRenderer()->render();
     });
+}
+
+Image* captureNode(Node* startNode, float scale)
+{ // The best snapshot API, support Scene and any Node
+    auto& size = startNode->getContentSize();
+
+    Director::getInstance()->setNextDeltaTimeZero(true);
+
+    RenderTexture* finalRtx = nullptr;
+
+    auto rtx = RenderTexture::create(size.width, size.height, Texture2D::PixelFormat::RGBA8888, GL_DEPTH24_STENCIL8);
+    // rtx->setKeepMatrix(true);
+    Point savedPos = startNode->getPosition();
+    Point anchor;
+    if (!startNode->isIgnoreAnchorPointForPosition()) {
+        anchor = startNode->getAnchorPoint();
+    }
+    startNode->setPosition(Point(size.width * anchor.x, size.height * anchor.y));
+    rtx->begin(); 
+    startNode->visit();
+    rtx->end();
+    startNode->setPosition(savedPos);
+
+    if (std::abs(scale - 1.0f) < 1e-6f/* no scale */)
+        finalRtx = rtx;
+    else {
+        /* scale */
+        auto finalRect = Rect(0, 0, size.width, size.height);
+        Sprite *sprite = Sprite::createWithTexture(rtx->getSprite()->getTexture(), finalRect);
+        sprite->setAnchorPoint(Point(0, 0));
+        sprite->setFlippedY(true);
+
+        finalRtx = RenderTexture::create(size.width * scale, size.height * scale, Texture2D::PixelFormat::RGBA8888, GL_DEPTH24_STENCIL8);
+
+        sprite->setScale(scale); // or use finalRtx->setKeepMatrix(true);
+        finalRtx->begin(); 
+        sprite->visit();
+        finalRtx->end();
+    }
+
+    Director::getInstance()->getRenderer()->render();
+
+    return finalRtx->newImage();
 }
 
 std::vector<Node*> findChildren(const Node &node, const std::string &name)
@@ -217,7 +269,7 @@ long long getTimeInMilliseconds()
 {
     struct timeval tv;
     gettimeofday (&tv, nullptr);
-    return tv.tv_sec * 1000 + tv.tv_usec / 1000;
+    return (long long)tv.tv_sec * 1000 + tv.tv_usec / 1000;
 }
 
 Rect getCascadeBoundingBox(Node *node)
@@ -263,7 +315,236 @@ Rect getCascadeBoundingBox(Node *node)
     
     return cbb;
 }
+
+Sprite* createSpriteFromBase64Cached(const char* base64String, const char* key)
+{
+    Texture2D* texture = Director::getInstance()->getTextureCache()->getTextureForKey(key);
+
+    if (texture == nullptr)
+    {
+        unsigned char* decoded;
+        int length = base64Decode((const unsigned char*)base64String, (unsigned int)strlen(base64String), &decoded);
+
+        Image *image = new (std::nothrow) Image();
+        bool imageResult = image->initWithImageData(decoded, length);
+        CCASSERT(imageResult, "Failed to create image from base64!");
+        free(decoded);
+
+        if (!imageResult) {
+            CC_SAFE_RELEASE_NULL(image);
+            return nullptr;
+        }
+
+        texture = Director::getInstance()->getTextureCache()->addImage(image, key);
+        image->release();
+    }
+
+    Sprite* sprite = Sprite::createWithTexture(texture);
     
+    return sprite;
+}
+
+Sprite* createSpriteFromBase64(const char* base64String)
+{
+    unsigned char* decoded;
+    int length = base64Decode((const unsigned char*)base64String, (unsigned int)strlen(base64String), &decoded);
+
+    Image *image = new (std::nothrow) Image();
+    bool imageResult = image->initWithImageData(decoded, length);
+    CCASSERT(imageResult, "Failed to create image from base64!");
+    free(decoded);
+
+    if (!imageResult) {
+        CC_SAFE_RELEASE_NULL(image);
+        return nullptr;
+    }
+
+    Texture2D *texture = new (std::nothrow) Texture2D();
+    texture->initWithImage(image);
+    texture->setAliasTexParameters();
+    image->release();
+
+    Sprite* sprite = Sprite::createWithTexture(texture);
+    texture->release();
+
+    return sprite;
+}
+
+Node* findChild(Node* levelRoot, const std::string& name)
+{
+    if (levelRoot == nullptr || name.empty())
+        return nullptr;
+
+    // Find this node
+    auto target = levelRoot->getChildByName(name);
+    if (target != nullptr)
+        return target;
+
+    // Find recursively
+    for (auto& child : levelRoot->getChildren())
+    {
+        target = findChild(child, name);
+        if (target != nullptr)
+            return target;
+    }
+    return nullptr;
+}
+
+Node* findChild(Node* levelRoot, int tag)
+{
+    if (levelRoot == nullptr || tag == Node::INVALID_TAG)
+        return nullptr;
+
+    // Find this node
+    auto target = levelRoot->getChildByTag(tag);
+    if (target != nullptr)
+        return target;
+
+    // Find recursively
+    for (auto& child : levelRoot->getChildren())
+    {
+        target = findChild(child, tag);
+        if (target != nullptr)
+            return target;
+    }
+
+    return nullptr;
+}
+
+std::string getFileMD5Hash(const std::string &filename)
+{
+    Data data;
+    FileUtils::getInstance()->getContents(filename, &data);
+
+    return getDataMD5Hash(data);
+}
+
+std::string getDataMD5Hash(const Data &data)
+{
+    static const unsigned int MD5_DIGEST_LENGTH = 16;
+
+    if (data.isNull())
+    {
+        return std::string();
+    }
+
+    md5_state_t state;
+    md5_byte_t digest[MD5_DIGEST_LENGTH];
+    char hexOutput[(MD5_DIGEST_LENGTH << 1) + 1] = { 0 };
+
+    md5_init(&state);
+    md5_append(&state, (const md5_byte_t *)data.getBytes(), (int)data.getSize());
+    md5_finish(&state, digest);
+
+    for (int di = 0; di < 16; ++di)
+        sprintf(hexOutput + di * 2, "%02x", digest[di]);
+
+    return hexOutput;
+}
+
+LanguageType getLanguageTypeByISO2(const char* code)
+{
+    // this function is used by all platforms to get system language
+    // except windows: cocos/platform/win32/CCApplication-win32.cpp
+    LanguageType ret = LanguageType::ENGLISH;
+
+    if (strncmp(code, "zh", 2) == 0)
+    {
+        ret = LanguageType::CHINESE;
+    }
+    else if (strncmp(code, "ja", 2) == 0)
+    {
+        ret = LanguageType::JAPANESE;
+    }
+    else if (strncmp(code, "fr", 2) == 0)
+    {
+        ret = LanguageType::FRENCH;
+    }
+    else if (strncmp(code, "it", 2) == 0)
+    {
+        ret = LanguageType::ITALIAN;
+    }
+    else if (strncmp(code, "de", 2) == 0)
+    {
+        ret = LanguageType::GERMAN;
+    }
+    else if (strncmp(code, "es", 2) == 0)
+    {
+        ret = LanguageType::SPANISH;
+    }
+    else if (strncmp(code, "nl", 2) == 0)
+    {
+        ret = LanguageType::DUTCH;
+    }
+    else if (strncmp(code, "ru", 2) == 0)
+    {
+        ret = LanguageType::RUSSIAN;
+    }
+    else if (strncmp(code, "hu", 2) == 0)
+    {
+        ret = LanguageType::HUNGARIAN;
+    }
+    else if (strncmp(code, "pt", 2) == 0)
+    {
+        ret = LanguageType::PORTUGUESE;
+    }
+    else if (strncmp(code, "ko", 2) == 0)
+    {
+        ret = LanguageType::KOREAN;
+    }
+    else if (strncmp(code, "ar", 2) == 0)
+    {
+        ret = LanguageType::ARABIC;
+    }
+    else if (strncmp(code, "nb", 2) == 0)
+    {
+        ret = LanguageType::NORWEGIAN;
+    }
+    else if (strncmp(code, "pl", 2) == 0)
+    {
+        ret = LanguageType::POLISH;
+    }
+    else if (strncmp(code, "tr", 2) == 0)
+    {
+        ret = LanguageType::TURKISH;
+    }
+    else if (strncmp(code, "uk", 2) == 0)
+    {
+        ret = LanguageType::UKRAINIAN;
+    }
+    else if (strncmp(code, "ro", 2) == 0)
+    {
+        ret = LanguageType::ROMANIAN;
+    }
+    else if (strncmp(code, "bg", 2) == 0)
+    {
+        ret = LanguageType::BULGARIAN;
+    }
+    else if (strncmp(code, "be", 2) == 0)
+    {
+        ret = LanguageType::BELARUSIAN;
+    }
+    return ret;
+}
+
+std::vector<int> parseIntegerList(const std::string &intsString) {
+    std::vector<int> result;
+
+    const char *cStr = intsString.c_str();
+    char *endptr;
+
+    for (long int i = strtol(cStr, &endptr, 10); endptr != cStr; i = strtol(cStr, &endptr, 10)) {
+        if (errno == ERANGE) {
+            errno = 0;
+            CCLOGWARN("%s contains out of range integers", intsString.c_str());
+        }
+        result.push_back(static_cast<int>(i));
+        cStr= endptr;
+    }
+
+    return result;
+}
+
 }
 
 NS_CC_END

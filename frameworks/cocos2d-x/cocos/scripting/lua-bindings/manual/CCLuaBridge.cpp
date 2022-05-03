@@ -1,5 +1,6 @@
 /****************************************************************************
- Copyright (c) 2013 Chukong Technologies Inc.
+ Copyright (c) 2013-2016 Chukong Technologies Inc.
+ Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
  
  http://www.cocos2d-x.org
  
@@ -22,7 +23,7 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#include "CCLuaBridge.h"
+#include "scripting/lua-bindings/manual/CCLuaBridge.h"
 
 NS_CC_BEGIN
 

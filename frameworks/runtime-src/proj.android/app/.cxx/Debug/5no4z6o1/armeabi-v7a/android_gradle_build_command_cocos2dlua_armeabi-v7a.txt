@@ -1,0 +1,7 @@
+Executable : D:\software\AndroidSDK\cmake\3.18.1\bin\ninja.exe
+arguments : 
+-C
+E:\GitHub\cocos2dx-AR\frameworks\runtime-src\proj.android\app\.cxx\Debug\5no4z6o1\armeabi-v7a
+cocos2dlua
+jvmArgs : 
+

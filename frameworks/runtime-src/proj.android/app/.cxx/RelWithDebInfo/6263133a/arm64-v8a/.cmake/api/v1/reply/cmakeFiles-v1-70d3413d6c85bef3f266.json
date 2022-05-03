@@ -1,0 +1,592 @@
+{
+	"inputs" : 
+	[
+		{
+			"path" : "CMakeLists.txt"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeDetermineSystem.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/ndk/21.4.7075529/build/cmake/android.toolchain.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/ndk/21.4.7075529/build/cmake/platforms.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/Platform/Android-Determine.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeSystem.cmake.in"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "frameworks/runtime-src/proj.android/app/.cxx/RelWithDebInfo/6263133a/arm64-v8a/CMakeFiles/3.18.1-g262b901-dirty/CMakeSystem.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/ndk/21.4.7075529/build/cmake/android.toolchain.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeSystemSpecificInitialize.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/Platform/Android-Initialize.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeDetermineCCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeDetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/Platform/Android-Determine-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/Platform/Android/Determine-Compiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeFindBinUtils.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/Compiler/Clang-FindBinUtils.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeCCompiler.cmake.in"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "frameworks/runtime-src/proj.android/app/.cxx/RelWithDebInfo/6263133a/arm64-v8a/CMakeFiles/3.18.1-g262b901-dirty/CMakeCCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeDetermineCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeDetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/Platform/Android-Determine-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/Platform/Android/Determine-Compiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeFindBinUtils.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/Compiler/Clang-FindBinUtils.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeCXXCompiler.cmake.in"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "frameworks/runtime-src/proj.android/app/.cxx/RelWithDebInfo/6263133a/arm64-v8a/CMakeFiles/3.18.1-g262b901-dirty/CMakeCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeSystemSpecificInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeGenericSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeInitializeConfigs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/Platform/Android.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/Platform/Linux.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/Platform/UnixPaths.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeCInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/Compiler/Clang-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/Compiler/Clang.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/Internal/CMakeCheckCompilerFlag.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/Platform/Android-Clang-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/Platform/Android-Clang.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeTestCCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeTestCompilerCommon.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeDetermineCompilerABI.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeParseImplicitIncludeInfo.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeParseImplicitLinkInfo.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeTestCompilerCommon.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeCCompilerABI.c"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeDetermineCompileFeatures.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/Internal/FeatureTesting.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeCCompiler.cmake.in"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "frameworks/runtime-src/proj.android/app/.cxx/RelWithDebInfo/6263133a/arm64-v8a/CMakeFiles/3.18.1-g262b901-dirty/CMakeCCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeCXXInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/Compiler/Clang-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/Compiler/Clang.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/Platform/Android-Clang-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/Platform/Android-Clang.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeTestCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeTestCompilerCommon.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeDetermineCompilerABI.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeParseImplicitIncludeInfo.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeParseImplicitLinkInfo.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeTestCompilerCommon.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeCXXCompilerABI.cpp"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeDetermineCompileFeatures.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/Internal/FeatureTesting.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeCXXCompiler.cmake.in"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "frameworks/runtime-src/proj.android/app/.cxx/RelWithDebInfo/6263133a/arm64-v8a/CMakeFiles/3.18.1-g262b901-dirty/CMakeCXXCompiler.cmake"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cmake/Modules/CocosBuildSet.cmake"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cmake/Modules/CocosBuildHelpers.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/software/AndroidSDK/cmake/3.18.1/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cmake/Modules/CocosConfigDefine.cmake"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cmake/Modules/CocosConfigDepend.cmake"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cocos/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cocos/2d/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cocos/3d/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cocos/platform/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cocos/physics/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cocos/physics3d/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cocos/math/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cocos/navmesh/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cocos/renderer/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cocos/vr/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cocos/base/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cocos/deprecated/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cocos/ui/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cocos/network/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cocos/audio/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cocos/storage/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cocos/editor-support/cocosbuilder/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cocos/editor-support/cocostudio/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cocos/editor-support/spine/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/extensions/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/Box2D/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/chipmunk/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/freetype2/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/recast/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/bullet/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/jpeg/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/openssl/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/tiff/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/uv/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/webp/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/websockets/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/tinyxml2/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/xxhash/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/xxtea/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/clipper/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/edtaa3func/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/ConvertUTF/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/poly2tri/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/md5/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/lua/luajit/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/lua/tolua/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/lua/luasocket/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/curl/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/png/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/android-specific/cpufeatures/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/android-specific/pvmp3dec/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/android-specific/tremolo/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/zlib/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/external/unzip/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cocos/scripting/lua-bindings/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cocos/platform/android/CMakeLists.txt"
+		},
+		{
+			"path" : "frameworks/cocos2d-x/cocos/scripting/lua-bindings/proj.android/CMakeLists.txt"
+		}
+	],
+	"kind" : "cmakeFiles",
+	"paths" : 
+	{
+		"build" : "E:/GitHub/cocos2dx-AR/frameworks/runtime-src/proj.android/app/.cxx/RelWithDebInfo/6263133a/arm64-v8a",
+		"source" : "E:/GitHub/cocos2dx-AR"
+	},
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 0
+	}
+}

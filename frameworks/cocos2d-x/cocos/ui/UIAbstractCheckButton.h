@@ -1,5 +1,6 @@
 /****************************************************************************
-Copyright (c) 2013-2014 Chukong Technologies Inc.
+Copyright (c) 2013-2016 Chukong Technologies Inc.
+Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
 http://www.cocos2d-x.org
 
@@ -34,6 +35,7 @@ THE SOFTWARE.
  */
 NS_CC_BEGIN
 class Sprite;
+struct CC_DLL ResourceData;
 
 namespace ui {
     
@@ -113,7 +115,7 @@ public:
      * Set to true will cause the CheckBox's state to "selected", false otherwise.
      *@param selected Set to true will change CheckBox to selected state, false otherwise.
      */
-    void setSelected(bool selected);
+    virtual void setSelected(bool selected);
     
     //override functions
     virtual Size getVirtualRendererSize() const override;
@@ -160,11 +162,17 @@ public:
      * @return the sprite instance of front cross when disabled
      */
     Sprite* getRendererFrontCrossDisabled() const { return _frontCrossDisabledRenderer; }
-    
+
+    ResourceData getBackNormalFile();
+    ResourceData getBackPressedFile();
+    ResourceData getBackDisabledFile();
+    ResourceData getCrossNormalFile();
+    ResourceData getCrossDisabledFile();
+
 CC_CONSTRUCTOR_ACCESS:
     virtual bool init() override;
     virtual bool init(const std::string& backGround,
-                      const std::string& backGroundSeleted,
+                      const std::string& backGroundSelected,
                       const std::string& cross,
                       const std::string& backGroundDisabled,
                       const std::string& frontCrossDisabled,
@@ -188,22 +196,22 @@ protected:
     virtual void onPressStateChangedToPressed() override;
     virtual void onPressStateChangedToDisabled() override;
     
-    void setupBackgroundTexture();
+    virtual void setupBackgroundTexture();
     void loadTextureBackGround(SpriteFrame* spriteFrame);
-    void setupBackgroundSelectedTexture();
+    virtual void setupBackgroundSelectedTexture();
     void loadTextureBackGroundSelected(SpriteFrame* spriteFrame);
-    void setupFrontCrossTexture();
+    virtual void setupFrontCrossTexture();
     void loadTextureFrontCross(SpriteFrame* spriteframe);
-    void setupBackgroundDisable();
+    virtual void setupBackgroundDisable();
     void loadTextureBackGroundDisabled(SpriteFrame* spriteframe);
-    void setupFrontCrossDisableTexture();
+    virtual void setupFrontCrossDisableTexture();
     void loadTextureFrontCrossDisabled(SpriteFrame* spriteframe);
     
     virtual void dispatchSelectChangedEvent(bool selected) = 0;
     
     virtual void onSizeChanged() override;
     
-    void backGroundTextureScaleChangedWithSize();
+    virtual void backGroundTextureScaleChangedWithSize();
     void backGroundSelectedTextureScaleChangedWithSize();
     void frontCrossTextureScaleChangedWithSize();
     void backGroundDisabledTextureScaleChangedWithSize();
@@ -237,6 +245,12 @@ protected:
     bool _frontCrossRendererAdaptDirty;
     bool _backGroundBoxDisabledRendererAdaptDirty;
     bool _frontCrossDisabledRendererAdaptDirty;
+
+    std::string _backGroundFileName;
+    std::string _backGroundSelectedFileName;
+    std::string _frontCrossFileName;
+    std::string _backGroundDisabledFileName;
+    std::string _frontCrossDisabledFileName;
 };
     
 }

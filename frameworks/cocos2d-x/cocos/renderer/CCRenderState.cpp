@@ -1,5 +1,6 @@
 /****************************************************************************
- Copyright (c) 2015 Chukong Technologies Inc.
+ Copyright (c) 2015-2016 Chukong Technologies Inc.
+ Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
  Copyright (c) 2014 GamePlay3D team
 
  http://www.cocos2d-x.org
@@ -24,7 +25,7 @@
 
  ****************************************************************************/
 
-#include "CCRenderState.h"
+#include "renderer/CCRenderState.h"
 
 #include <string>
 
@@ -39,10 +40,10 @@ RenderState::StateBlock* RenderState::StateBlock::_defaultState = nullptr;
 
 
 RenderState::RenderState()
-: _texture(nullptr)
-, _hash(0)
+: _hash(0)
 , _hashDirty(true)
 , _parent(nullptr)
+, _texture(nullptr)
 {
     _state = StateBlock::create();
     CC_SAFE_RETAIN(_state);
@@ -50,12 +51,13 @@ RenderState::RenderState()
 
 RenderState::~RenderState()
 {
+    CC_SAFE_RELEASE(_texture);
     CC_SAFE_RELEASE(_state);
 }
 
 void RenderState::initialize()
 {
-    if (StateBlock::_defaultState == NULL)
+    if (StateBlock::_defaultState == nullptr)
     {
         StateBlock::_defaultState = StateBlock::create();
         CC_SAFE_RETAIN(StateBlock::_defaultState);
@@ -121,7 +123,7 @@ void RenderState::bind(Pass* pass)
     StateBlock::restore(stateOverrideBits);
 
     // Apply renderer state for the entire hierarchy, top-down.
-    rs = NULL;
+    rs = nullptr;
     while ((rs = getTopmost(rs)))
     {
         if (rs->_state)
@@ -137,12 +139,12 @@ RenderState* RenderState::getTopmost(RenderState* below)
     if (rs == below)
     {
         // Nothing below ourself.
-        return NULL;
+        return nullptr;
     }
 
     while (rs)
     {
-        if (rs->_parent == below || rs->_parent == NULL)
+        if (rs->_parent == below || rs->_parent == nullptr)
         {
             // Stop traversing up here.
             return rs;
@@ -150,7 +152,7 @@ RenderState* RenderState::getTopmost(RenderState* below)
         rs = rs->_parent;
     }
 
-    return NULL;
+    return nullptr;
 }
 
 RenderState::StateBlock* RenderState::getStateBlock() const
@@ -197,7 +199,7 @@ RenderState::StateBlock* RenderState::StateBlock::create()
 }
 
 //
-// The defaults are based on GamePlay3D defaults, with the following chagnes
+// The defaults are based on GamePlay3D defaults, with the following changes
 // _depthWriteEnabled is FALSE
 // _depthTestEnabled is TRUE
 // _blendEnabled is TRUE
@@ -454,26 +456,26 @@ static bool parseBoolean(const std::string& value)
     return (value.compare("true")==0);
 }
 
-static int parseInt(const std::string& value)
-{
-    // Android NDK 10 doesn't support std::stoi a/ std::stoul
-#if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
-    return std::stoi(value);
-#else
-    return atoi(value.c_str());
-#endif
-}
-
-static unsigned int parseUInt(const std::string& value)
-{
-    // Android NDK 10 doesn't support std::stoi a/ std::stoul
-#if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
-    return (unsigned int)std::stoul(value);
-#else
-    return (unsigned int)atoi(value.c_str());
-#endif
-
-}
+//static int parseInt(const std::string& value)
+//{
+//    // Android NDK 10 doesn't support std::stoi a/ std::stoul
+//#if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
+//    return std::stoi(value);
+//#else
+//    return atoi(value.c_str());
+//#endif
+//}
+//
+//static unsigned int parseUInt(const std::string& value)
+//{
+//    // Android NDK 10 doesn't support std::stoi a/ std::stoul
+//#if CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
+//    return (unsigned int)std::stoul(value);
+//#else
+//    return (unsigned int)atoi(value.c_str());
+//#endif
+//
+//}
 
 static RenderState::Blend parseBlend(const std::string& value)
 {
@@ -575,61 +577,61 @@ static RenderState::FrontFace parseFrontFace(const std::string& value)
     }
 }
 
-static RenderState::StencilFunction parseStencilFunc(const std::string& value)
-{
-    // Convert string to uppercase for comparison
-    std::string upper(value);
-    std::transform(upper.begin(), upper.end(), upper.begin(), (int(*)(int))toupper);
-    if (upper == "NEVER")
-        return RenderState::STENCIL_NEVER;
-    else if (upper == "LESS")
-        return RenderState::STENCIL_LESS;
-    else if (upper == "EQUAL")
-        return RenderState::STENCIL_EQUAL;
-    else if (upper == "LEQUAL")
-        return RenderState::STENCIL_LEQUAL;
-    else if (upper == "GREATER")
-        return RenderState::STENCIL_GREATER;
-    else if (upper == "NOTEQUAL")
-        return RenderState::STENCIL_NOTEQUAL;
-    else if (upper == "GEQUAL")
-        return RenderState::STENCIL_GEQUAL;
-    else if (upper == "ALWAYS")
-        return RenderState::STENCIL_ALWAYS;
-    else
-    {
-        CCLOG("Unsupported stencil function value (%s). Will default to STENCIL_ALWAYS if errors are treated as warnings)", value.c_str());
-        return RenderState::STENCIL_ALWAYS;
-    }
-}
-
-static RenderState::StencilOperation parseStencilOp(const std::string& value)
-{
-    // Convert string to uppercase for comparison
-    std::string upper(value);
-    std::transform(upper.begin(), upper.end(), upper.begin(), (int(*)(int))toupper);
-    if (upper == "KEEP")
-        return RenderState::STENCIL_OP_KEEP;
-    else if (upper == "ZERO")
-        return RenderState::STENCIL_OP_ZERO;
-    else if (upper == "REPLACE")
-        return RenderState::STENCIL_OP_REPLACE;
-    else if (upper == "INCR")
-        return RenderState::STENCIL_OP_INCR;
-    else if (upper == "DECR")
-        return RenderState::STENCIL_OP_DECR;
-    else if (upper == "INVERT")
-        return RenderState::STENCIL_OP_INVERT;
-    else if (upper == "INCR_WRAP")
-        return RenderState::STENCIL_OP_INCR_WRAP;
-    else if (upper == "DECR_WRAP")
-        return RenderState::STENCIL_OP_DECR_WRAP;
-    else
-    {
-        CCLOG("Unsupported stencil operation value (%s). Will default to STENCIL_OP_KEEP if errors are treated as warnings)", value.c_str());
-        return RenderState::STENCIL_OP_KEEP;
-    }
-}
+//static RenderState::StencilFunction parseStencilFunc(const std::string& value)
+//{
+//    // Convert string to uppercase for comparison
+//    std::string upper(value);
+//    std::transform(upper.begin(), upper.end(), upper.begin(), (int(*)(int))toupper);
+//    if (upper == "NEVER")
+//        return RenderState::STENCIL_NEVER;
+//    else if (upper == "LESS")
+//        return RenderState::STENCIL_LESS;
+//    else if (upper == "EQUAL")
+//        return RenderState::STENCIL_EQUAL;
+//    else if (upper == "LEQUAL")
+//        return RenderState::STENCIL_LEQUAL;
+//    else if (upper == "GREATER")
+//        return RenderState::STENCIL_GREATER;
+//    else if (upper == "NOTEQUAL")
+//        return RenderState::STENCIL_NOTEQUAL;
+//    else if (upper == "GEQUAL")
+//        return RenderState::STENCIL_GEQUAL;
+//    else if (upper == "ALWAYS")
+//        return RenderState::STENCIL_ALWAYS;
+//    else
+//    {
+//        CCLOG("Unsupported stencil function value (%s). Will default to STENCIL_ALWAYS if errors are treated as warnings)", value.c_str());
+//        return RenderState::STENCIL_ALWAYS;
+//    }
+//}
+//
+//static RenderState::StencilOperation parseStencilOp(const std::string& value)
+//{
+//    // Convert string to uppercase for comparison
+//    std::string upper(value);
+//    std::transform(upper.begin(), upper.end(), upper.begin(), (int(*)(int))toupper);
+//    if (upper == "KEEP")
+//        return RenderState::STENCIL_OP_KEEP;
+//    else if (upper == "ZERO")
+//        return RenderState::STENCIL_OP_ZERO;
+//    else if (upper == "REPLACE")
+//        return RenderState::STENCIL_OP_REPLACE;
+//    else if (upper == "INCR")
+//        return RenderState::STENCIL_OP_INCR;
+//    else if (upper == "DECR")
+//        return RenderState::STENCIL_OP_DECR;
+//    else if (upper == "INVERT")
+//        return RenderState::STENCIL_OP_INVERT;
+//    else if (upper == "INCR_WRAP")
+//        return RenderState::STENCIL_OP_INCR_WRAP;
+//    else if (upper == "DECR_WRAP")
+//        return RenderState::STENCIL_OP_DECR_WRAP;
+//    else
+//    {
+//        CCLOG("Unsupported stencil operation value (%s). Will default to STENCIL_OP_KEEP if errors are treated as warnings)", value.c_str());
+//        return RenderState::STENCIL_OP_KEEP;
+//    }
+//}
 
 void RenderState::StateBlock::setState(const std::string& name, const std::string& value)
 {

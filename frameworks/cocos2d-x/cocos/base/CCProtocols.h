@@ -1,7 +1,8 @@
 /****************************************************************************
 Copyright (c) 2008-2010 Ricardo Quesada
 Copyright (c) 2010-2012 cocos2d-x.org
-Copyright (c) 2013-2015 Chukong Technologies Inc.
+Copyright (c) 2013-2016 Chukong Technologies Inc.
+Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
 http://www.cocos2d-x.org
 
@@ -235,7 +236,7 @@ public:
     /**
      * Sets a new label using a string
      *
-     * @param label A null terminated string
+     * @param label The name of the new label.
      * @js NA
      * @lua NA
      */
@@ -267,6 +268,18 @@ public:
     virtual void updateProjection() = 0;
 };
 
+/**
+ * interface for playable items
+ */
+class CC_DLL PlayableProtocol
+{
+public:
+    virtual ~PlayableProtocol(){}
+    
+    virtual void start() = 0;
+    
+    virtual void stop() = 0;
+};
 NS_CC_END
 
 /// @endcond

@@ -1,5 +1,6 @@
 ﻿/****************************************************************************
-Copyright (c) 2013-2014 Chukong Technologies Inc.
+Copyright (c) 2013-2016 Chukong Technologies Inc.
+Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
 http://www.cocos2d-x.org
 
@@ -25,12 +26,10 @@ THE SOFTWARE.
 #ifndef __TRIGGEROBJ_H__
 #define __TRIGGEROBJ_H__
 
-#include "CocoStudio.h"
+#include "editor-support/cocostudio/CocoStudio.h"
 #include "base/CCVector.h"
+#include "base/CCEventListenerCustom.h"
 
-namespace cocos2d {
-class EventListenerCustom;
-}
 
 namespace cocostudio {
 

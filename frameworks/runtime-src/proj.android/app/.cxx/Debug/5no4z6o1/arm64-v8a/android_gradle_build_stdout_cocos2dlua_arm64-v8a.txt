@@ -1,0 +1,2 @@
+ninja: Entering directory `E:\GitHub\cocos2dx-AR\frameworks\runtime-src\proj.android\app\.cxx\Debug\5no4z6o1\arm64-v8a'
+ninja: no work to do.

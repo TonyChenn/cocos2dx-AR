@@ -12,12 +12,39 @@
 -- @return Director#Director self (return value: cc.Director)
         
 --------------------------------
+-- Clones a projection matrix and put it to the top of projection matrix stack.<br>
+-- param index The index of projection matrix stack.<br>
+-- js NA
+-- @function [parent=#Director] pushProjectionMatrix 
+-- @param self
+-- @param #unsigned int index
+-- @return Director#Director self (return value: cc.Director)
+        
+--------------------------------
+--  Pops the top matrix of the projection matrix stack.<br>
+-- param index The index of projection matrix stack.<br>
+-- js NA
+-- @function [parent=#Director] popProjectionMatrix 
+-- @param self
+-- @param #unsigned int index
+-- @return Director#Director self (return value: cc.Director)
+        
+--------------------------------
 --  Sets the EventDispatcher associated with this director.<br>
 -- since v3.0<br>
 -- js NA
 -- @function [parent=#Director] setEventDispatcher 
 -- @param self
 -- @param #cc.EventDispatcher dispatcher
+-- @return Director#Director self (return value: cc.Director)
+        
+--------------------------------
+--  Adds an identity matrix to the top of projection matrix stack.<br>
+-- param index The index of projection matrix stack.<br>
+-- js NA
+-- @function [parent=#Director] loadProjectionIdentityMatrix 
+-- @param self
+-- @param #unsigned int index
 -- @return Director#Director self (return value: cc.Director)
         
 --------------------------------
@@ -29,6 +56,12 @@
 -- @param self
 -- @param #float scaleFactor
 -- @return Director#Director self (return value: cc.Director)
+        
+--------------------------------
+-- 
+-- @function [parent=#Director] getDeltaTime 
+-- @param self
+-- @return float#float ret (return value: float)
         
 --------------------------------
 -- Gets content scale factor.<br>
@@ -44,10 +77,10 @@
 -- @return size_table#size_table ret (return value: size_table)
         
 --------------------------------
--- 
--- @function [parent=#Director] getDeltaTime 
+-- Returns safe area rectangle of the OpenGL view in points.
+-- @function [parent=#Director] getSafeAreaRect 
 -- @param self
--- @return float#float ret (return value: float)
+-- @return rect_table#rect_table ret (return value: rect_table)
         
 --------------------------------
 --  Sets the OpenGL default values.<br>
@@ -128,11 +161,13 @@
 -- @return vec2_table#vec2_table ret (return value: vec2_table)
         
 --------------------------------
--- 
--- @function [parent=#Director] mainLoop 
+-- @overload self, float         
+-- @overload self         
+-- @function [parent=#Director] mainLoop
 -- @param self
+-- @param #float dt
 -- @return Director#Director self (return value: cc.Director)
-        
+
 --------------------------------
 --  Enables/disables OpenGL depth test. 
 -- @function [parent=#Director] setDepthTest 
@@ -197,12 +232,29 @@
 -- @return Director#Director self (return value: cc.Director)
         
 --------------------------------
+-- Multiplies a matrix to the top of projection matrix stack.<br>
+-- param mat The matrix that to be multiplied.<br>
+-- param index The index of projection matrix stack.<br>
+-- js NA
+-- @function [parent=#Director] multiplyProjectionMatrix 
+-- @param self
+-- @param #mat4_table mat
+-- @param #unsigned int index
+-- @return Director#Director self (return value: cc.Director)
+        
+--------------------------------
 -- Gets the top matrix of specified type of matrix stack.<br>
 -- js NA
 -- @function [parent=#Director] getMatrix 
 -- @param self
 -- @param #int type
 -- @return mat4_table#mat4_table ret (return value: mat4_table)
+        
+--------------------------------
+-- returns whether or not the Director is in a valid state
+-- @function [parent=#Director] isValid 
+-- @param self
+-- @return bool#bool ret (return value: bool)
         
 --------------------------------
 --  The main loop is triggered again.<br>
@@ -421,6 +473,26 @@
 -- @return size_table#size_table ret (return value: size_table)
         
 --------------------------------
+-- Adds a matrix to the top of projection matrix stack.<br>
+-- param mat The matrix that to be added.<br>
+-- param index The index of projection matrix stack.<br>
+-- js NA
+-- @function [parent=#Director] loadProjectionMatrix 
+-- @param self
+-- @param #mat4_table mat
+-- @param #unsigned int index
+-- @return Director#Director self (return value: cc.Director)
+        
+--------------------------------
+-- Init the projection matrix stack.<br>
+-- param stackCount The size of projection matrix stack.<br>
+-- js NA
+-- @function [parent=#Director] initProjectionMatrixStack 
+-- @param self
+-- @param #unsigned int stackCount
+-- @return Director#Director self (return value: cc.Director)
+        
+--------------------------------
 --  Gets the Scheduler associated with this director.<br>
 -- since v2.0
 -- @function [parent=#Director] getScheduler 
@@ -442,6 +514,13 @@
 -- @function [parent=#Director] getAnimationInterval 
 -- @param self
 -- @return float#float ret (return value: float)
+        
+--------------------------------
+--  Gets clear values for the color buffers.<br>
+-- js NA
+-- @function [parent=#Director] getClearColor 
+-- @param self
+-- @return color4f_table#color4f_table ret (return value: color4f_table)
         
 --------------------------------
 --  Whether or not the Director is paused. 

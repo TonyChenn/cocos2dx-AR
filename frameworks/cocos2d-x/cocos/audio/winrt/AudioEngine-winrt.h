@@ -2,6 +2,7 @@
 * cocos2d-x   http://www.cocos2d-x.org
 *
 * Copyright (c) 2010-2011 - cocos2d-x community
+* Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 *
 * Portions Copyright (c) Microsoft Open Technologies, Inc.
 * All Rights Reserved
@@ -28,8 +29,8 @@
 #include <unordered_map>
 
 #include "base/CCRef.h"
-#include "AudioEngine.h"
-#include "AudioCachePlayer.h"
+#include "audio/include/AudioEngine.h"
+#include "audio/winrt/AudioCachePlayer.h"
 
 NS_CC_BEGIN
     namespace experimental{

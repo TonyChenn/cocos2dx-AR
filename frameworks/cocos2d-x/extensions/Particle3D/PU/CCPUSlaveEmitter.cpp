@@ -1,6 +1,7 @@
 /****************************************************************************
  Copyright (C) 2013 Henry van Merode. All rights reserved.
- Copyright (c) 2015 Chukong Technologies Inc.
+ Copyright (c) 2015-2016 Chukong Technologies Inc.
+ Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
  
  http://www.cocos2d-x.org
  
@@ -60,7 +61,7 @@ void PUSlaveEmitter::setMasterEmitterName(const std::string& masterEmitterName)
     _masterEmitterNameSet = true;
 }
 //-----------------------------------------------------------------------
-void PUSlaveEmitter::particleEmitted(PUParticleSystem3D* particleSystem, PUParticle3D* particle)
+void PUSlaveEmitter::particleEmitted(PUParticleSystem3D* /*particleSystem*/, PUParticle3D* particle)
 {
     if (_masterEmitterNameSet && _masterEmitterName != particle->parentEmitter->getName())
     {
@@ -79,6 +80,10 @@ void PUSlaveEmitter::particleEmitted(PUParticleSystem3D* particleSystem, PUParti
     static_cast<PUParticleSystem3D *>(_particleSystem)->forceEmission(this, 1); // Just emit one, to be in sync with the master.
     _isEnabled = false;
 }
+
+void PUSlaveEmitter::particleExpired(PUParticleSystem3D* /*particleSystem*/, PUParticle3D* /*particle*/)
+{}
+
 //-----------------------------------------------------------------------
 void PUSlaveEmitter::initParticlePosition(PUParticle3D* particle)
 {

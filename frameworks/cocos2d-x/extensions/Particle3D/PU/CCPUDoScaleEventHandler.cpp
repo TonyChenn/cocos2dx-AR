@@ -1,6 +1,7 @@
 /****************************************************************************
  Copyright (C) 2013 Henry van Merode. All rights reserved.
- Copyright (c) 2015 Chukong Technologies Inc.
+ Copyright (c) 2015-2016 Chukong Technologies Inc.
+ Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
  
  http://www.cocos2d-x.org
  
@@ -50,7 +51,7 @@ void PUDoScaleEventHandler::setScaleType(const PUDoScaleEventHandler::ScaleType&
     _scaleType = scaleType;
 }
 //-----------------------------------------------------------------------
-const float PUDoScaleEventHandler::getScaleFraction(void) const
+float PUDoScaleEventHandler::getScaleFraction() const
 {
     return _scaleFraction;
 }
@@ -60,7 +61,7 @@ void PUDoScaleEventHandler::setScaleFraction(const float scaleFraction)
     _scaleFraction = scaleFraction;
 }
 //-----------------------------------------------------------------------
-void PUDoScaleEventHandler::handle (PUParticleSystem3D* particleSystem, PUParticle3D* particle, float timeElapsed)
+void PUDoScaleEventHandler::handle (PUParticleSystem3D* /*particleSystem*/, PUParticle3D* particle, float timeElapsed)
 {
     if (!particle)
         return;

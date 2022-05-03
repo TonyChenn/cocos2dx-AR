@@ -1,5 +1,6 @@
 /****************************************************************************
- Copyright (c) 2014 Chukong Technologies Inc.
+ Copyright (c) 2014-2016 Chukong Technologies Inc.
+ Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
  http://www.cocos2d-x.org
 
@@ -80,7 +81,7 @@ public:
     
     static void createAsync(const std::string &modelPath, const std::string &texturePath, const std::function<void(Sprite3D*, void*)>& callback, void* callbackparam);
     
-    /**set texture, set the first if multiple textures exist*/
+    /**set diffuse texture, set the first if multiple textures exist*/
     void setTexture(const std::string& texFile);
     void setTexture(Texture2D* texture);
     
@@ -98,7 +99,7 @@ public:
     std::vector<Mesh*> getMeshArrayByName(const std::string& name) const;
 
     /**get mesh*/
-    Mesh* getMesh() const { return _meshes.at(0); }
+    Mesh* getMesh() const;
     
     /** get mesh count */
     ssize_t getMeshCount() const { return _meshes.size(); }
@@ -200,6 +201,11 @@ public:
     */
     void setForce2DQueue(bool force2D);
 
+    /**
+    * Get meshes used in sprite 3d
+    */
+    const Vector<Mesh*>& getMeshes() const { return _meshes; }
+
 CC_CONSTRUCTOR_ACCESS:
     
     Sprite3D();
@@ -226,9 +232,9 @@ CC_CONSTRUCTOR_ACCESS:
     /**generate default material*/
     void genMaterial(bool useLight = false);
 
-    void createNode(NodeData* nodedata, Node* root, const MaterialDatas& matrialdatas, bool singleSprite);
-    void createAttachSprite3DNode(NodeData* nodedata,const MaterialDatas& matrialdatas);
-    Sprite3D* createSprite3DNode(NodeData* nodedata,ModelData* modeldata,const MaterialDatas& matrialdatas);
+    void createNode(NodeData* nodedata, Node* root, const MaterialDatas& materialdatas, bool singleSprite);
+    void createAttachSprite3DNode(NodeData* nodedata, const MaterialDatas& materialdatas);
+    Sprite3D* createSprite3DNode(NodeData* nodedata, ModelData* modeldata, const MaterialDatas& materialdatas);
 
     /**get MeshIndexData by Id*/
     MeshIndexData* getMeshIndexData(const std::string& indexId) const;
@@ -266,7 +272,7 @@ protected:
         std::function<void(Sprite3D*, void*)> afterLoadCallback; // callback after load
         void*                           callbackParam;
         bool                            result; // sprite load result
-        std::string                     modlePath;
+        std::string                     modelPath;
         std::string                     texPath; //
         MeshDatas* meshdatas;
         MaterialDatas* materialdatas;

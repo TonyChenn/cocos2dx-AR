@@ -1,6 +1,7 @@
 /****************************************************************************
  Copyright (C) 2013 Henry van Merode. All rights reserved.
- Copyright (c) 2015 Chukong Technologies Inc.
+ Copyright (c) 2015-2016 Chukong Technologies Inc.
+ Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
  
  http://www.cocos2d-x.org
  
@@ -52,7 +53,7 @@ PUCircleEmitter::PUCircleEmitter(void) :
 {
 }
 //-----------------------------------------------------------------------
-const float PUCircleEmitter::getRadius(void) const
+float PUCircleEmitter::getRadius() const
 {
     return _radius;
 }
@@ -62,7 +63,7 @@ void PUCircleEmitter::setRadius(const float radius)
     _radius = radius;
 }
 //-----------------------------------------------------------------------
-const float PUCircleEmitter::getCircleAngle(void) const
+float PUCircleEmitter::getCircleAngle() const
 {
     return _originalCircleAngle;
 }
@@ -73,7 +74,7 @@ void PUCircleEmitter::setCircleAngle(const float circleAngle)
     _circleAngle = circleAngle;
 }
 //-----------------------------------------------------------------------
-const float PUCircleEmitter::getStep(void) const
+float PUCircleEmitter::getStep() const
 {
     return _step;
 }
@@ -83,7 +84,7 @@ void PUCircleEmitter::setStep(const float step)
     _step = step;
 }
 //-----------------------------------------------------------------------
-const bool PUCircleEmitter::isRandom(void) const
+bool PUCircleEmitter::isRandom() const
 {
     return _random;
 }

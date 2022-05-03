@@ -2,7 +2,8 @@
 Copyright (c) 2008-2010 Ricardo Quesada
 Copyright (c) 2010-2012 cocos2d-x.org
 Copyright (c) 2011      Zynga Inc.
-Copyright (c) 2013-2014 Chukong Technologies Inc.
+Copyright (c) 2013-2016 Chukong Technologies Inc.
+Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
 http://www.cocos2d-x.org
 
@@ -30,7 +31,7 @@ THE SOFTWARE.
 
 // 0x00 HI ME LO
 // 00   03 08 00
-#define COCOS2D_VERSION 0x00030800
+#define COCOS2D_VERSION 0x00031702
 
 //
 // all cocos2d include files
@@ -75,8 +76,11 @@ THE SOFTWARE.
 #include "base/CCEventListenerFocus.h"
 #include "base/CCEventListenerKeyboard.h"
 #include "base/CCEventListenerMouse.h"
+#include "base/CCEventListenerController.h"
 #include "base/CCEventListenerTouch.h"
 #include "base/CCEventMouse.h"
+#include "base/CCEventController.h"
+#include "base/CCController.h"
 #include "base/CCEventTouch.h"
 #include "base/CCEventType.h"
 
@@ -151,6 +155,7 @@ THE SOFTWARE.
 #include "renderer/CCGLProgram.h"
 #include "renderer/CCGLProgramCache.h"
 #include "renderer/CCGLProgramState.h"
+#include "renderer/CCGLProgramStateCache.h"
 #include "renderer/CCGroupCommand.h"
 #include "renderer/CCMaterial.h"
 #include "renderer/CCPass.h"
@@ -169,13 +174,6 @@ THE SOFTWARE.
 #include "renderer/CCVertexAttribBinding.h"
 #include "renderer/CCVertexIndexBuffer.h"
 #include "renderer/CCVertexIndexData.h"
-#include "renderer/CCPrimitive.h"
-#include "renderer/CCPrimitiveCommand.h"
-#include "renderer/CCTrianglesCommand.h"
-#include "renderer/CCMaterial.h"
-#include "renderer/CCTechnique.h"
-#include "renderer/CCPass.h"
-#include "renderer/CCRenderState.h"
 #include "renderer/CCFrameBuffer.h"
 #include "renderer/ccGLStateCache.h"
 #include "renderer/ccShaders.h"
@@ -214,13 +212,6 @@ THE SOFTWARE.
 //Enhance modification end
 #endif // CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_BLACKBERRY)
-    #include "platform/blackberry/CCApplication.h"
-    #include "platform/blackberry/CCGLViewImpl.h"
-    #include "platform/blackberry/CCGL.h"
-    #include "platform/blackberry/CCStdC.h"
-#endif // CC_TARGET_PLATFORM == CC_PLATFORM_BLACKBERRY
-
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
     #include "platform/win32/CCApplication-win32.h"
     #include "platform/desktop/CCGLViewImpl-desktop.h"
@@ -241,13 +232,6 @@ THE SOFTWARE.
     #include "platform/linux/CCGL-linux.h"
     #include "platform/linux/CCStdC-linux.h"
 #endif // CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
-	#include "platform/winrt/CCApplication.h"
-	#include "platform/winrt/CCGLViewImpl-winrt.h"
-	#include "platform/winrt/CCGL.h"
-	#include "platform/winrt/CCStdC.h"
-#endif // CC_TARGET_PLATFORM == CC_PLATFORM_WINRT
 
 // script_support
 #include "base/CCScriptSupport.h"
@@ -301,18 +285,14 @@ THE SOFTWARE.
 #include "3d/CCSprite3DMaterial.h"
 #include "3d/CCTerrain.h"
 
+// vr
+#include "vr/CCVRGenericRenderer.h"
 
-// Deprecated include
-#include "deprecated/CCArray.h"
-#include "deprecated/CCBool.h"
-#include "deprecated/CCDictionary.h"
-#include "deprecated/CCDouble.h"
-#include "deprecated/CCFloat.h"
-#include "deprecated/CCInteger.h"
-#include "deprecated/CCNotificationCenter.h"
-#include "deprecated/CCSet.h"
-#include "deprecated/CCString.h"
-// CCDeprecated.h must be included at the end
+
+// Deprecated
+// All deprecated features are include inside deprecated/CCDeprecated.h.
+// It is recommended that you just include what is needed.
+// eg. #include "deprecated/CCString.h" if you only need cocos2d::__String.
 #include "deprecated/CCDeprecated.h"
 
 

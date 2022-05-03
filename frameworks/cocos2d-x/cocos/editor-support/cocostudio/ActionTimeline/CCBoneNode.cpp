@@ -1,5 +1,6 @@
 /****************************************************************************
-Copyright (c) 2015 Chukong Technologies Inc.
+Copyright (c) 2015-2016 Chukong Technologies Inc.
+Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
 http://www.cocos2d-x.org
 
@@ -28,18 +29,18 @@ THE SOFTWARE.
 #include "renderer/CCGLProgram.h"
 #include "renderer/CCGLProgramState.h"
 
-#include "CCBoneNode.h"
-#include "CCSkeletonNode.h"
+#include "editor-support/cocostudio/ActionTimeline/CCBoneNode.h"
+#include "editor-support/cocostudio/ActionTimeline/CCSkeletonNode.h"
 
 NS_TIMELINE_BEGIN
 
 BoneNode::BoneNode()
-: _isRackShow(false)
+: _blendFunc(cocos2d::BlendFunc::ALPHA_NON_PREMULTIPLIED)
+, _isRackShow(false)
 , _rackColor(cocos2d::Color4F::WHITE)
 , _rackLength(50)
 , _rackWidth(20)
 , _rootSkeleton(nullptr)
-, _blendFunc(cocos2d::BlendFunc::ALPHA_NON_PREMULTIPLIED)
 {
 }
 
@@ -441,7 +442,7 @@ void BoneNode::updateColor()
     _transformUpdated = _transformDirty = _inverseDirty = _contentSizeDirty = true;
 }
 
-void BoneNode::updateDisplayedColor(const cocos2d::Color3B& parentColor)
+void BoneNode::updateDisplayedColor(const cocos2d::Color3B& /*parentColor*/)
 {
     if (_cascadeColorEnabled)
     {
@@ -452,7 +453,7 @@ void BoneNode::updateDisplayedColor(const cocos2d::Color3B& parentColor)
     }
 }
 
-void BoneNode::updateDisplayedOpacity(GLubyte parentOpacity)
+void BoneNode::updateDisplayedOpacity(GLubyte /*parentOpacity*/)
 {
     if (_cascadeOpacityEnabled)
     {
@@ -479,7 +480,7 @@ void BoneNode::disableCascadeColor()
     }
 }
 
-void BoneNode::onDraw(const cocos2d::Mat4 &transform, uint32_t flags)
+void BoneNode::onDraw(const cocos2d::Mat4 &transform, uint32_t /*flags*/)
 {
     getGLProgram()->use();
     getGLProgram()->setUniformsForBuiltins(transform);
@@ -550,8 +551,8 @@ void BoneNode::sortAllChildren()
 {
     if (_reorderChildDirty)
     {
-        std::sort(_childBones.begin(), _childBones.end(), cocos2d::nodeComparisonLess);
-        std::sort(_boneSkins.begin(), _boneSkins.end(), cocos2d::nodeComparisonLess);
+        sortNodes(_childBones);
+        sortNodes(_boneSkins);
         Node::sortAllChildren();
     }
 }
@@ -572,7 +573,7 @@ bool BoneNode::isPointOnRack(const cocos2d::Vec2& bonePoint)
         if (_rackLength != 0.0f && _rackWidth != 0.0f)
         {
             float a1 = (_squareVertices[2].y - _squareVertices[3].y) / (_squareVertices[3].x - _squareVertices[0].x);
-            float a2 = (_squareVertices[2].y - _squareVertices[3].y) / (_squareVertices[0].x - _squareVertices[1].x);;
+            float a2 = (_squareVertices[2].y - _squareVertices[3].y) / (_squareVertices[0].x - _squareVertices[1].x);
             float b1 = a1 * _squareVertices[3].x;
             float y1 = bonePoint.y - _squareVertices[1].y;
             if (y1 >= a1 * bonePoint.x - b1 &&
@@ -616,15 +617,6 @@ void BoneNode::batchBoneDrawToSkeleton(BoneNode* bone) const
         bone->_rootSkeleton->_batchedBoneColors[count + i] = bone->_squareColors[i];
     }
     bone->_rootSkeleton->_batchedVeticesCount += 4;
-    count += 4;
-#ifdef CC_STUDIO_ENABLED_VIEW
-    for (int i = 0; i < 4; i++)
-    {
-        bone->_rootSkeleton->_batchedBoneVetices[count + i] = vpos[i];
-        bone->_rootSkeleton->_batchedBoneColors[count + i] = bone->_squareColors[i];
-    }
-    bone->_rootSkeleton->_batchedVeticesCount += 4;
-#endif //CC_STUDIO_ENABLED_VIEW
 }
 
 

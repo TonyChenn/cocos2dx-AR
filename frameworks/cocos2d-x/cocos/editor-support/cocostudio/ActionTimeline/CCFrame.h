@@ -1,5 +1,6 @@
 ﻿/****************************************************************************
 Copyright (c) 2013 cocos2d-x.org
+Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
 http://www.cocos2d-x.org
 
@@ -31,8 +32,8 @@ THE SOFTWARE.
 #include "2d/CCNode.h"
 #include "2d/CCSprite.h"
 #include "2d/CCTweenFunction.h"
-#include "CCTimelineMacro.h"
-#include "cocostudio/CocosStudioExport.h"
+#include "editor-support/cocostudio/ActionTimeline/CCTimelineMacro.h"
+#include "editor-support/cocostudio/CocosStudioExport.h"
 
 NS_TIMELINE_BEGIN
 
@@ -413,7 +414,27 @@ public:
 protected:
     cocos2d::BlendFunc  _blendFunc;
 };
-NS_TIMELINE_END
 
+class CC_STUDIO_DLL PlayableFrame : public Frame
+{
+public:
+    static PlayableFrame* create();
+    
+    PlayableFrame();
+    
+    virtual void onEnter(Frame* nextFrame, int currentFrameINdex) override;
+    virtual Frame* clone() override;
+
+    inline std::string getPlayableAct() const { return _playableAct; }
+    // @param playact, express the interface in PlayableProtocol, should be "start"  or "stop"
+    inline void setPlayableAct(std::string playact) { _playableAct = playact; }
+
+    static const std::string PLAYABLE_EXTENTION;
+private:
+    std::string _playableAct;  // express the interface in PlayableProtocol
+    static const std::string START_ACT;
+    static const std::string STOP_ACT;
+};
+NS_TIMELINE_END
 
 #endif /*__CCFRAME_H__*/

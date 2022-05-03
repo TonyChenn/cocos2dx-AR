@@ -1,5 +1,6 @@
 /****************************************************************************
- Copyright (c) 2015 Chukong Technologies Inc.
+ Copyright (c) 2015-2016 Chukong Technologies Inc.
+ Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
  
  http://www.cocos2d-x.org
  
@@ -102,9 +103,11 @@ public:
     /**
      * draw the background
      */
-    virtual void drawBackground(Camera* camera) {}
-    
-CC_CONSTRUCTOR_ACCESS:
+    virtual void drawBackground(Camera* /*camera*/) {}
+
+    virtual bool isValid() { return true; }
+
+CC_CONSTRUCTOR_ACCESS :
     CameraBackgroundBrush();
     virtual ~CameraBackgroundBrush();
 
@@ -149,13 +152,22 @@ CC_CONSTRUCTOR_ACCESS:
     virtual ~CameraBackgroundDepthBrush();
 
     virtual bool init() override;
-    
+
+protected:
+#if CC_ENABLE_CACHE_TEXTURE_DATA
+    EventListenerCustom* _backToForegroundListener;
+#endif
+    void initBuffer();
+
 protected:
     float _depth;
     
     GLboolean _clearColor;
     
     V3F_C4B_T2F_Quad _quad;
+    GLuint      _vao;
+    GLuint      _vertexBuffer;
+    GLuint      _indexBuffer;
 };
 
 /**
@@ -179,11 +191,16 @@ public:
     static CameraBackgroundColorBrush* create(const Color4F& color, float depth);
     
     /**
+     * Draw background
+     */
+    virtual void drawBackground(Camera* camera) override;
+    
+    /**
      * Set clear color
      * @param color Color used to clear the color buffer
      */
     void setColor(const Color4F& color);
-    
+
 CC_CONSTRUCTOR_ACCESS:
     CameraBackgroundColorBrush();
     virtual ~CameraBackgroundColorBrush();
@@ -227,7 +244,7 @@ public:
      */
     static CameraBackgroundSkyBoxBrush* create();
     /**
-     * Set skybox texutre 
+     * Set skybox texture 
      * @param texture Skybox texture
      */
     void setTexture(TextureCube*  texture);
@@ -236,8 +253,13 @@ public:
      * Draw background
      */
     virtual void drawBackground(Camera* camera) override;
-    
-CC_CONSTRUCTOR_ACCESS:
+
+    bool isActived() const;
+    void setActived(bool actived);
+    virtual void setTextureValid(bool valid);
+    virtual bool isValid()override;
+
+CC_CONSTRUCTOR_ACCESS :
     CameraBackgroundSkyBoxBrush();
     virtual ~CameraBackgroundSkyBoxBrush();
     
@@ -255,9 +277,13 @@ protected:
     
     TextureCube*  _texture;
     
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
+#if CC_ENABLE_CACHE_TEXTURE_DATA
     EventListenerCustom* _backToForegroundListener;
 #endif
+
+private:
+    bool _actived;
+    bool _textureValid;
 };
 
 NS_CC_END

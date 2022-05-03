@@ -4,6 +4,7 @@
  *
  * Copyright (c) 2012 Pierre-David Bélanger
  * Copyright (c) 2012 cocos2d-x.org
+ * Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -77,7 +78,7 @@ public:
     @brief Get whether the clipping is enabled or not.
     @return Whether the clipping is enabled or not. Default is true.
     */
-    const bool isClippingEnabled() const {
+    bool isClippingEnabled() const {
         return _clippingEnabled;
     }
 

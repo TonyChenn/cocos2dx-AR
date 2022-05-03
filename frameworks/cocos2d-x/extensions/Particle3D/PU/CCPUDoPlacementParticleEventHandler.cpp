@@ -1,6 +1,7 @@
 /****************************************************************************
  Copyright (C) 2013 Henry van Merode. All rights reserved.
- Copyright (c) 2015 Chukong Technologies Inc.
+ Copyright (c) 2015-2016 Chukong Technologies Inc.
+ Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
  
  http://www.cocos2d-x.org
  
@@ -61,7 +62,7 @@ PUDoPlacementParticleEventHandler::~PUDoPlacementParticleEventHandler(void)
     // still exist.
 }
 //-----------------------------------------------------------------------
-void PUDoPlacementParticleEventHandler::handle (PUParticleSystem3D* particleSystem, PUParticle3D* particle, float timeElapsed)
+void PUDoPlacementParticleEventHandler::handle (PUParticleSystem3D* particleSystem, PUParticle3D* particle, float /*timeElapsed*/)
 {
     if (!particle)
         return;
@@ -118,7 +119,7 @@ void PUDoPlacementParticleEventHandler::handle (PUParticleSystem3D* particleSyst
     _baseParticle = 0;
 }
 //-----------------------------------------------------------------------
-void PUDoPlacementParticleEventHandler::particleEmitted(PUParticleSystem3D* particleSystem, PUParticle3D* particle)
+void PUDoPlacementParticleEventHandler::particleEmitted(PUParticleSystem3D* /*particleSystem*/, PUParticle3D* particle)
 {
     if (!_baseParticle)
         return;
@@ -221,6 +222,10 @@ void PUDoPlacementParticleEventHandler::particleEmitted(PUParticleSystem3D* part
         }
     }
 }
+
+void PUDoPlacementParticleEventHandler::particleExpired(PUParticleSystem3D* /*particleSystem*/, PUParticle3D* /*particle*/)
+{}
+
 //-----------------------------------------------------------------------
 void PUDoPlacementParticleEventHandler::setForceEmitterName(const std::string& forceEmitterName)
 {

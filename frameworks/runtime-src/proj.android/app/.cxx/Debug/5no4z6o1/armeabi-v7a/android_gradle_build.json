@@ -1,0 +1,219 @@
+{
+  "buildFiles": [
+    "E:\\GitHub\\cocos2dx-AR\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cmake\\Modules\\CocosBuildHelpers.cmake",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cmake\\Modules\\CocosBuildSet.cmake",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cmake\\Modules\\CocosConfigDefine.cmake",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cmake\\Modules\\CocosConfigDepend.cmake",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cocos\\2d\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cocos\\3d\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cocos\\audio\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cocos\\base\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cocos\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cocos\\deprecated\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cocos\\editor-support\\cocosbuilder\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cocos\\editor-support\\cocostudio\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cocos\\editor-support\\spine\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cocos\\math\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cocos\\navmesh\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cocos\\network\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cocos\\physics3d\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cocos\\physics\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cocos\\platform\\android\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cocos\\platform\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cocos\\renderer\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cocos\\scripting\\lua-bindings\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cocos\\scripting\\lua-bindings\\proj.android\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cocos\\storage\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cocos\\ui\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\cocos\\vr\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\extensions\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\android-specific\\cpufeatures\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\android-specific\\pvmp3dec\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\android-specific\\tremolo\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\Box2D\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\bullet\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\chipmunk\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\clipper\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\cmake\\CocosExternalConfig.cmake",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\ConvertUTF\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\curl\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\edtaa3func\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\freetype2\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\jpeg\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\lua\\luajit\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\lua\\luasocket\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\lua\\tolua\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\md5\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\openssl\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\png\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\poly2tri\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\recast\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\tiff\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\tinyxml2\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\unzip\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\uv\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\webp\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\websockets\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\xxhash\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\xxtea\\CMakeLists.txt",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\cocos2d-x\\external\\zlib\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "D:\\software\\AndroidSDK\\cmake\\3.18.1\\bin\\ninja.exe",
+      "-C",
+      "E:\\GitHub\\cocos2dx-AR\\frameworks\\runtime-src\\proj.android\\app\\.cxx\\Debug\\5no4z6o1\\armeabi-v7a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "D:\\software\\AndroidSDK\\cmake\\3.18.1\\bin\\ninja.exe",
+    "-C",
+    "E:\\GitHub\\cocos2dx-AR\\frameworks\\runtime-src\\proj.android\\app\\.cxx\\Debug\\5no4z6o1\\armeabi-v7a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "cocos2d::@b17589fc6237857a1771": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "cocos2d",
+      "output": "E:\\GitHub\\cocos2dx-AR\\frameworks\\runtime-src\\proj.android\\app\\.cxx\\Debug\\5no4z6o1\\armeabi-v7a\\lib\\libcocos2d.a"
+    },
+    "cocos2dlua::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "cocos2dlua",
+      "output": "E:\\GitHub\\cocos2dx-AR\\frameworks\\runtime-src\\proj.android\\app\\build\\intermediates\\cxx\\Debug\\5no4z6o1\\obj\\armeabi-v7a\\libcocos2dlua.so",
+      "runtimeFiles": []
+    },
+    "cpp_android_spec::@1eba3e23debeef414eca": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "cpp_android_spec",
+      "output": "E:\\GitHub\\cocos2dx-AR\\frameworks\\runtime-src\\proj.android\\app\\.cxx\\Debug\\5no4z6o1\\armeabi-v7a\\engine\\cocos\\platform\\libcpp_android_spec.a"
+    },
+    "ext_clipper::@33abc919e86db66c28b8": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "ext_clipper",
+      "output": "E:\\GitHub\\cocos2dx-AR\\frameworks\\runtime-src\\proj.android\\app\\.cxx\\Debug\\5no4z6o1\\armeabi-v7a\\lib\\libext_clipper.a"
+    },
+    "ext_convertUTF::@205c2f0e44a3b06b9b59": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "ext_convertUTF",
+      "output": "E:\\GitHub\\cocos2dx-AR\\frameworks\\runtime-src\\proj.android\\app\\.cxx\\Debug\\5no4z6o1\\armeabi-v7a\\lib\\libext_convertUTF.a"
+    },
+    "ext_cpufeatures::@faefd91259078ecab22c": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "ext_cpufeatures",
+      "output": "E:\\GitHub\\cocos2dx-AR\\frameworks\\runtime-src\\proj.android\\app\\.cxx\\Debug\\5no4z6o1\\armeabi-v7a\\engine\\external\\android-specific\\cpufeatures\\libext_cpufeatures.a"
+    },
+    "ext_edtaa3func::@f3d42e550923b89477b0": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "ext_edtaa3func",
+      "output": "E:\\GitHub\\cocos2dx-AR\\frameworks\\runtime-src\\proj.android\\app\\.cxx\\Debug\\5no4z6o1\\armeabi-v7a\\lib\\libext_edtaa3func.a"
+    },
+    "ext_luasocket::@37f39e64711d3f4aa3f1": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "ext_luasocket",
+      "output": "E:\\GitHub\\cocos2dx-AR\\frameworks\\runtime-src\\proj.android\\app\\.cxx\\Debug\\5no4z6o1\\armeabi-v7a\\lib\\libext_luasocket.a"
+    },
+    "ext_md5::@82bef7d6fa8c2aa61808": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "ext_md5",
+      "output": "E:\\GitHub\\cocos2dx-AR\\frameworks\\runtime-src\\proj.android\\app\\.cxx\\Debug\\5no4z6o1\\armeabi-v7a\\lib\\libext_md5.a"
+    },
+    "ext_poly2tri::@ce0bfd23a4070be0c5de": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "ext_poly2tri",
+      "output": "E:\\GitHub\\cocos2dx-AR\\frameworks\\runtime-src\\proj.android\\app\\.cxx\\Debug\\5no4z6o1\\armeabi-v7a\\lib\\libext_poly2tri.a"
+    },
+    "ext_pvmp3dec::@942eff57d9b63e8baa4e": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "ext_pvmp3dec",
+      "output": "E:\\GitHub\\cocos2dx-AR\\frameworks\\runtime-src\\proj.android\\app\\.cxx\\Debug\\5no4z6o1\\armeabi-v7a\\lib\\libext_pvmp3dec.a"
+    },
+    "ext_recast::@49aedbc985f97720d891": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "ext_recast",
+      "output": "E:\\GitHub\\cocos2dx-AR\\frameworks\\runtime-src\\proj.android\\app\\.cxx\\Debug\\5no4z6o1\\armeabi-v7a\\lib\\libext_recast.a"
+    },
+    "ext_tinyxml2::@fd6ab661f4ee25a21ef0": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "ext_tinyxml2",
+      "output": "E:\\GitHub\\cocos2dx-AR\\frameworks\\runtime-src\\proj.android\\app\\.cxx\\Debug\\5no4z6o1\\armeabi-v7a\\lib\\libext_tinyxml2.a"
+    },
+    "ext_tolua::@6eca172c0eb2cfdb004f": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "ext_tolua",
+      "output": "E:\\GitHub\\cocos2dx-AR\\frameworks\\runtime-src\\proj.android\\app\\.cxx\\Debug\\5no4z6o1\\armeabi-v7a\\lib\\libext_tolua.a"
+    },
+    "ext_tremolo::@afb4f15f0e6ee4fb58dc": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "ext_tremolo",
+      "output": "E:\\GitHub\\cocos2dx-AR\\frameworks\\runtime-src\\proj.android\\app\\.cxx\\Debug\\5no4z6o1\\armeabi-v7a\\lib\\libext_tremolo.a"
+    },
+    "ext_unzip::@05a8bf1aba81c1a16e64": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "ext_unzip",
+      "output": "E:\\GitHub\\cocos2dx-AR\\frameworks\\runtime-src\\proj.android\\app\\.cxx\\Debug\\5no4z6o1\\armeabi-v7a\\lib\\libext_unzip.a"
+    },
+    "ext_xxhash::@11e20b8b9139209a045a": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "ext_xxhash",
+      "output": "E:\\GitHub\\cocos2dx-AR\\frameworks\\runtime-src\\proj.android\\app\\.cxx\\Debug\\5no4z6o1\\armeabi-v7a\\lib\\libext_xxhash.a"
+    },
+    "ext_xxtea::@95546a4b2abc077b0042": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "ext_xxtea",
+      "output": "E:\\GitHub\\cocos2dx-AR\\frameworks\\runtime-src\\proj.android\\app\\.cxx\\Debug\\5no4z6o1\\armeabi-v7a\\lib\\libext_xxtea.a"
+    },
+    "external::@62470bbe2074d04a1904": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "external",
+      "output": "E:\\GitHub\\cocos2dx-AR\\frameworks\\runtime-src\\proj.android\\app\\.cxx\\Debug\\5no4z6o1\\armeabi-v7a\\lib\\libexternal.a"
+    },
+    "lua_android_spec::@43b417b990bc47aedf8c": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "lua_android_spec",
+      "output": "E:\\GitHub\\cocos2dx-AR\\frameworks\\runtime-src\\proj.android\\app\\.cxx\\Debug\\5no4z6o1\\armeabi-v7a\\engine\\cocos\\lua-android\\liblua_android_spec.a"
+    },
+    "luacocos2d::@8d9f2814c9cd77825a52": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "luacocos2d",
+      "output": "E:\\GitHub\\cocos2dx-AR\\frameworks\\runtime-src\\proj.android\\app\\.cxx\\Debug\\5no4z6o1\\armeabi-v7a\\lib\\libluacocos2d.a"
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "D:\\software\\AndroidSDK\\ndk\\21.4.7075529\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+      "cppCompilerExecutable": "D:\\software\\AndroidSDK\\ndk\\21.4.7075529\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
+    }
+  },
+  "cFileExtensions": [
+    "c"
+  ],
+  "cppFileExtensions": [
+    "cpp",
+    "cc"
+  ]
+}

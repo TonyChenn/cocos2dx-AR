@@ -1,0 +1,654 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "E:/GitHub/cocos2dx-AR/frameworks/runtime-src/proj.android/app/build/intermediates/cxx/Debug/5no4z6o1/obj/arm64-v8a/libcocos2dlua.so"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_libraries",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 133,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 135,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 137,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 140,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 55,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -fsigned-char -O0 -fno-limit-debug-info  -fPIC"
+				},
+				{
+					"fragment" : "-std=gnu++11"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 4,
+					"define" : "ANDROID"
+				},
+				{
+					"backtrace" : 4,
+					"define" : "COCOS2D_DEBUG=1"
+				},
+				{
+					"backtrace" : 4,
+					"define" : "LWS_WITH_LIBUV"
+				},
+				{
+					"backtrace" : 4,
+					"define" : "USE_FILE32API"
+				},
+				{
+					"define" : "cocos2dlua_EXPORTS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 5,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/runtime-src/Classes"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/cocos/scripting/lua-bindings/auto"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/cocos/scripting/lua-bindings/manual"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/lua/tolua"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/tools/simulator/libsimulator/lib"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/cocos"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/extensions"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/cocos/platform"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/cocos/base"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/cocos/editor-support"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/cocos/audio/include"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/cocos/platform/android"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/recast/.."
+				},
+				{
+					"backtrace" : 4,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/tinyxml2/."
+				},
+				{
+					"backtrace" : 4,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/xxhash/."
+				},
+				{
+					"backtrace" : 4,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/xxtea/."
+				},
+				{
+					"backtrace" : 4,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/clipper/."
+				},
+				{
+					"backtrace" : 4,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/edtaa3func/."
+				},
+				{
+					"backtrace" : 4,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/ConvertUTF/."
+				},
+				{
+					"backtrace" : 4,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/poly2tri/.."
+				},
+				{
+					"backtrace" : 4,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/md5/.."
+				},
+				{
+					"backtrace" : 4,
+					"path" : "D:/software/AndroidSDK/ndk/21.4.7075529/sources/android/cpufeatures"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/android-specific/pvmp3dec/include"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/android-specific/pvmp3dec/src"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/android-specific/tremolo/."
+				},
+				{
+					"backtrace" : 4,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/unzip/."
+				},
+				{
+					"backtrace" : 4,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/lua/tolua/."
+				},
+				{
+					"backtrace" : 4,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/lua/luasocket/.."
+				},
+				{
+					"backtrace" : 5,
+					"isSystem" : true,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/lua/luajit/include"
+				},
+				{
+					"backtrace" : 4,
+					"isSystem" : true,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/Box2D/include"
+				},
+				{
+					"backtrace" : 4,
+					"isSystem" : true,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/chipmunk/include"
+				},
+				{
+					"backtrace" : 4,
+					"isSystem" : true,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/freetype2/include/android/freetype2"
+				},
+				{
+					"backtrace" : 4,
+					"isSystem" : true,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/jpeg/include/android"
+				},
+				{
+					"backtrace" : 4,
+					"isSystem" : true,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/uv/include"
+				},
+				{
+					"backtrace" : 4,
+					"isSystem" : true,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/webp/include/android"
+				},
+				{
+					"backtrace" : 4,
+					"isSystem" : true,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/bullet/include"
+				},
+				{
+					"backtrace" : 4,
+					"isSystem" : true,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/bullet/include/bullet"
+				},
+				{
+					"backtrace" : 4,
+					"isSystem" : true,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/openssl/include/android"
+				},
+				{
+					"backtrace" : 4,
+					"isSystem" : true,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/tiff/include/android"
+				},
+				{
+					"backtrace" : 4,
+					"isSystem" : true,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/websockets/include/android"
+				},
+				{
+					"backtrace" : 4,
+					"isSystem" : true,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/curl/include/android"
+				},
+				{
+					"backtrace" : 4,
+					"isSystem" : true,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/png/include/android"
+				},
+				{
+					"backtrace" : 4,
+					"isSystem" : true,
+					"path" : "E:/GitHub/cocos2dx-AR/frameworks/cocos2d-x/external/zlib/include"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				1,
+				2
+			],
+			"sysroot" : 
+			{
+				"path" : "D:/software/AndroidSDK/ndk/21.4.7075529/toolchains/llvm/prebuilt/windows-x86_64/sysroot"
+			}
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 4,
+			"id" : "external::@62470bbe2074d04a1904"
+		},
+		{
+			"backtrace" : 4,
+			"id" : "cocos2d::@b17589fc6237857a1771"
+		},
+		{
+			"backtrace" : 4,
+			"id" : "ext_recast::@49aedbc985f97720d891"
+		},
+		{
+			"backtrace" : 4,
+			"id" : "ext_tinyxml2::@fd6ab661f4ee25a21ef0"
+		},
+		{
+			"backtrace" : 4,
+			"id" : "ext_xxhash::@11e20b8b9139209a045a"
+		},
+		{
+			"backtrace" : 4,
+			"id" : "ext_xxtea::@95546a4b2abc077b0042"
+		},
+		{
+			"backtrace" : 4,
+			"id" : "ext_cpufeatures::@faefd91259078ecab22c"
+		},
+		{
+			"backtrace" : 4,
+			"id" : "ext_luasocket::@37f39e64711d3f4aa3f1"
+		},
+		{
+			"backtrace" : 4,
+			"id" : "ext_md5::@82bef7d6fa8c2aa61808"
+		},
+		{
+			"backtrace" : 4,
+			"id" : "ext_edtaa3func::@f3d42e550923b89477b0"
+		},
+		{
+			"backtrace" : 4,
+			"id" : "ext_convertUTF::@205c2f0e44a3b06b9b59"
+		},
+		{
+			"backtrace" : 4,
+			"id" : "ext_tolua::@6eca172c0eb2cfdb004f"
+		},
+		{
+			"backtrace" : 4,
+			"id" : "ext_clipper::@33abc919e86db66c28b8"
+		},
+		{
+			"backtrace" : 4,
+			"id" : "ext_poly2tri::@ce0bfd23a4070be0c5de"
+		},
+		{
+			"backtrace" : 4,
+			"id" : "ext_pvmp3dec::@942eff57d9b63e8baa4e"
+		},
+		{
+			"backtrace" : 4,
+			"id" : "luacocos2d::@8d9f2814c9cd77825a52"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "lua_android_spec::@43b417b990bc47aedf8c"
+		},
+		{
+			"backtrace" : 4,
+			"id" : "ext_tremolo::@afb4f15f0e6ee4fb58dc"
+		},
+		{
+			"backtrace" : 4,
+			"id" : "ext_unzip::@05a8bf1aba81c1a16e64"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "cpp_android_spec::@1eba3e23debeef414eca"
+		}
+	],
+	"id" : "cocos2dlua::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libgcc_real.a -Wl,--exclude-libs,libatomic.a -static-libstdc++ -Wl,--build-id -Wl,--fatal-warnings -Wl,--no-undefined -Qunused-arguments",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-Wl,--whole-archive",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "engine\\cocos\\platform\\libcpp_android_spec.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-Wl,--no-whole-archive",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-Wl,--whole-archive",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "engine\\cocos\\lua-android\\liblua_android_spec.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-Wl,--no-whole-archive",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "lib\\libluacocos2d.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "lib\\libcocos2d.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "lib\\libexternal.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "..\\..\\..\\..\\..\\..\\..\\cocos2d-x\\external\\Box2D\\prebuilt\\android\\arm64-v8a\\libbox2d.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "..\\..\\..\\..\\..\\..\\..\\cocos2d-x\\external\\chipmunk\\prebuilt\\android\\arm64-v8a\\libchipmunk.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "..\\..\\..\\..\\..\\..\\..\\cocos2d-x\\external\\freetype2\\prebuilt\\android\\arm64-v8a\\libfreetype.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "lib\\libext_recast.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "..\\..\\..\\..\\..\\..\\..\\cocos2d-x\\external\\jpeg\\prebuilt\\android\\arm64-v8a\\libjpeg.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "..\\..\\..\\..\\..\\..\\..\\cocos2d-x\\external\\webp\\prebuilt\\android\\arm64-v8a\\libwebp.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "..\\..\\..\\..\\..\\..\\..\\cocos2d-x\\external\\bullet\\prebuilt\\android\\arm64-v8a\\libLinearMath.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "..\\..\\..\\..\\..\\..\\..\\cocos2d-x\\external\\bullet\\prebuilt\\android\\arm64-v8a\\libBulletDynamics.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "..\\..\\..\\..\\..\\..\\..\\cocos2d-x\\external\\bullet\\prebuilt\\android\\arm64-v8a\\libBulletCollision.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "..\\..\\..\\..\\..\\..\\..\\cocos2d-x\\external\\bullet\\prebuilt\\android\\arm64-v8a\\libLinearMath.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "..\\..\\..\\..\\..\\..\\..\\cocos2d-x\\external\\bullet\\prebuilt\\android\\arm64-v8a\\libBulletMultiThreaded.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "..\\..\\..\\..\\..\\..\\..\\cocos2d-x\\external\\bullet\\prebuilt\\android\\arm64-v8a\\libMiniCL.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "..\\..\\..\\..\\..\\..\\..\\cocos2d-x\\external\\tiff\\prebuilt\\android\\arm64-v8a\\libtiff.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "..\\..\\..\\..\\..\\..\\..\\cocos2d-x\\external\\websockets\\prebuilt\\android\\arm64-v8a\\libwebsockets.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "..\\..\\..\\..\\..\\..\\..\\cocos2d-x\\external\\uv\\prebuilt\\android\\arm64-v8a\\libuv_a.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "..\\..\\..\\..\\..\\..\\..\\cocos2d-x\\external\\openssl\\prebuilt\\android\\arm64-v8a\\libssl.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "..\\..\\..\\..\\..\\..\\..\\cocos2d-x\\external\\openssl\\prebuilt\\android\\arm64-v8a\\libcrypto.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "lib\\libext_tinyxml2.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "lib\\libext_xxhash.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "lib\\libext_xxtea.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "lib\\libext_clipper.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "lib\\libext_edtaa3func.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "lib\\libext_convertUTF.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "lib\\libext_poly2tri.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "lib\\libext_md5.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "..\\..\\..\\..\\..\\..\\..\\cocos2d-x\\external\\curl\\prebuilt\\android\\arm64-v8a\\libcurl.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "..\\..\\..\\..\\..\\..\\..\\cocos2d-x\\external\\png\\prebuilt\\android\\arm64-v8a\\libpng.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "engine\\external\\android-specific\\cpufeatures\\libext_cpufeatures.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-ldl",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "lib\\libext_pvmp3dec.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "lib\\libext_tremolo.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "..\\..\\..\\..\\..\\..\\..\\cocos2d-x\\external\\zlib\\prebuilt\\android\\arm64-v8a\\libz.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "lib\\libext_unzip.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lGLESv2",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lEGL",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-llog",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-landroid",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lOpenSLES",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "..\\..\\..\\..\\..\\..\\..\\cocos2d-x\\external\\lua\\luajit\\prebuilt\\android\\arm64-v8a\\libluajit.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "lib\\libext_tolua.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "lib\\libext_luasocket.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-latomic -lm",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX",
+		"sysroot" : 
+		{
+			"path" : "D:/software/AndroidSDK/ndk/21.4.7075529/toolchains/llvm/prebuilt/windows-x86_64/sysroot"
+		}
+	},
+	"name" : "cocos2dlua",
+	"nameOnDisk" : "libcocos2dlua.so",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				1,
+				2
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"path" : "frameworks/runtime-src/Classes/AppDelegate.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "frameworks/runtime-src/Classes/AppDelegate.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "frameworks/runtime-src/proj.android/app/jni/hellolua/main.cpp",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "SHARED_LIBRARY"
+}

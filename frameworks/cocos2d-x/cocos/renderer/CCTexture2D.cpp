@@ -1,7 +1,8 @@
 /****************************************************************************
 Copyright (c) 2008      Apple Inc. All Rights Reserved.
 Copyright (c) 2010-2012 cocos2d-x.org
-Copyright (c) 2013-2014 Chukong Technologies Inc.
+Copyright (c) 2013-2016 Chukong Technologies Inc.
+Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
 http://www.cocos2d-x.org
 
@@ -39,6 +40,7 @@ THE SOFTWARE.
 #include "platform/CCDevice.h"
 #include "base/ccConfig.h"
 #include "base/ccMacros.h"
+#include "base/ccUTF8.h"
 #include "base/CCConfiguration.h"
 #include "platform/CCPlatformMacros.h"
 #include "base/CCDirector.h"
@@ -46,8 +48,6 @@ THE SOFTWARE.
 #include "renderer/ccGLStateCache.h"
 #include "renderer/CCGLProgramCache.h"
 #include "base/CCNinePatchImageParser.h"
-#include "deprecated/CCString.h"
-
 
 #if CC_ENABLE_CACHE_TEXTURE_DATA
     #include "renderer/CCTextureCache.h"
@@ -322,6 +322,15 @@ void Texture2D::convertRGBA8888ToRGB565(const unsigned char* data, ssize_t dataL
     }
 }
 
+// RRRRRRRRGGGGGGGGBBBBBBBB -> AAAAAAAA
+void Texture2D::convertRGB888ToA8(const unsigned char* data, ssize_t dataLen, unsigned char* outData)
+{
+    for (ssize_t i = 0, l = dataLen - 2; i < l; i += 3)
+    {
+        *outData++ = (data[i] * 299 + data[i + 1] * 587 + data[i + 2] * 114 + 500) / 1000;  //A =  (R*299 + G*587 + B*114 + 500) / 1000
+    }
+}
+
 // RRRRRRRRGGGGGGGGBBBBBBBB -> IIIIIIII
 void Texture2D::convertRGB888ToI8(const unsigned char* data, ssize_t dataLen, unsigned char* outData)
 {
@@ -436,6 +445,8 @@ Texture2D::Texture2D()
 , _shaderProgram(nullptr)
 , _antialiasEnabled(true)
 , _ninePatchInfo(nullptr)
+, _valid(true)
+, _alphaTexture(nullptr)
 {
 }
 
@@ -444,6 +455,7 @@ Texture2D::~Texture2D()
 #if CC_ENABLE_CACHE_TEXTURE_DATA
     VolatileTextureMgr::removeTexture(this);
 #endif
+    CC_SAFE_RELEASE_NULL(_alphaTexture); // ETC1 ALPHA support.
 
     CCLOGINFO("deallocing Texture2D: %p - id=%u", this, _name);
     CC_SAFE_RELEASE(_shaderProgram);
@@ -484,6 +496,11 @@ int Texture2D::getPixelsHigh() const
 GLuint Texture2D::getName() const
 {
     return _name;
+}
+
+GLuint Texture2D::getAlphaTextureName() const
+{
+    return _alphaTexture == nullptr ? 0 : _alphaTexture->getName();
 }
 
 Size Texture2D::getContentSize() const
@@ -537,7 +554,7 @@ bool Texture2D::hasPremultipliedAlpha() const
     return _hasPremultipliedAlpha;
 }
 
-bool Texture2D::initWithData(const void *data, ssize_t dataLen, Texture2D::PixelFormat pixelFormat, int pixelsWide, int pixelsHigh, const Size& contentSize)
+bool Texture2D::initWithData(const void *data, ssize_t dataLen, Texture2D::PixelFormat pixelFormat, int pixelsWide, int pixelsHigh, const Size& /*contentSize*/)
 {
     CCASSERT(dataLen>0 && pixelsWide>0 && pixelsHigh>0, "Invalid size");
 
@@ -563,13 +580,14 @@ bool Texture2D::initWithMipmaps(MipmapInfo* mipmaps, int mipmapsNum, PixelFormat
     }
     
 
-    if(_pixelFormatInfoTables.find(pixelFormat) == _pixelFormatInfoTables.end())
+    auto formatItr = _pixelFormatInfoTables.find(pixelFormat);
+    if(formatItr == _pixelFormatInfoTables.end())
     {
         CCLOG("cocos2d: WARNING: unsupported pixelformat: %lx", (unsigned long)pixelFormat );
         return false;
     }
 
-    const PixelFormatInfo& info = _pixelFormatInfoTables.at(pixelFormat);
+    const PixelFormatInfo& info = formatItr->second;
 
     if (info.compressed && !Configuration::getInstance()->supportsPVRTC()
                         && !Configuration::getInstance()->supportsETC()
@@ -730,7 +748,7 @@ bool Texture2D::initWithImage(Image *image, PixelFormat format)
 
     int imageWidth = image->getWidth();
     int imageHeight = image->getHeight();
-
+    this->_filePath = image->getFilePath();
     Configuration *conf = Configuration::getInstance();
 
     int maxTextureSize = conf->getMaxTextureSize();
@@ -744,7 +762,7 @@ bool Texture2D::initWithImage(Image *image, PixelFormat format)
     Size             imageSize = Size((float)imageWidth, (float)imageHeight);
     PixelFormat      pixelFormat = ((PixelFormat::NONE == format) || (PixelFormat::AUTO == format)) ? image->getRenderFormat() : format;
     PixelFormat      renderFormat = image->getRenderFormat();
-    size_t	         tempDataLen = image->getDataLen();
+    size_t           tempDataLen = image->getDataLen();
 
 
     if (image->getNumberOfMipmaps() > 1)
@@ -756,16 +774,23 @@ bool Texture2D::initWithImage(Image *image, PixelFormat format)
 
         initWithMipmaps(image->getMipmaps(), image->getNumberOfMipmaps(), image->getRenderFormat(), imageWidth, imageHeight);
         
+        // set the premultiplied tag
+        _hasPremultipliedAlpha = image->hasPremultipliedAlpha();
+        
         return true;
     }
     else if (image->isCompressed())
     {
         if (pixelFormat != image->getRenderFormat())
         {
-            CCLOG("cocos2d: WARNING: This image is compressed and we cann't convert it for now");
+            CCLOG("cocos2d: WARNING: This image is compressed and we can't convert it for now");
         }
 
         initWithData(tempData, tempDataLen, image->getRenderFormat(), imageWidth, imageHeight, imageSize);
+        
+        // set the premultiplied tag
+        _hasPremultipliedAlpha = image->hasPremultipliedAlpha();
+        
         return true;
     }
     else
@@ -829,7 +854,7 @@ Texture2D::PixelFormat Texture2D::convertI8ToFormat(const unsigned char* data, s
         // unsupported conversion or don't need to convert
         if (format != PixelFormat::AUTO && format != PixelFormat::I8)
         {
-            CCLOG("Can not convert image format PixelFormat::I8 to format ID:%d, we will use it's origin format PixelFormat::I8", format);
+            CCLOG("Can not convert image format PixelFormat::I8 to format ID:%d, we will use it's origin format PixelFormat::I8", static_cast<int>(format));
         }
 
         *outData = (unsigned char*)data;
@@ -883,7 +908,7 @@ Texture2D::PixelFormat Texture2D::convertAI88ToFormat(const unsigned char* data,
         // unsupported conversion or don't need to convert
         if (format != PixelFormat::AUTO && format != PixelFormat::AI88)
         {
-            CCLOG("Can not convert image format PixelFormat::AI88 to format ID:%d, we will use it's origin format PixelFormat::AI88", format);
+            CCLOG("Can not convert image format PixelFormat::AI88 to format ID:%d, we will use it's origin format PixelFormat::AI88", static_cast<int>(format));
         }
 
         *outData = (unsigned char*)data;
@@ -909,6 +934,11 @@ Texture2D::PixelFormat Texture2D::convertRGB888ToFormat(const unsigned char* dat
         *outData = (unsigned char*)malloc(sizeof(unsigned char) * (*outDataLen));
         convertRGB888ToRGB565(data, dataLen, *outData);
         break;
+    case PixelFormat::A8:
+        *outDataLen = dataLen/3;
+        *outData = (unsigned char*)malloc(sizeof(unsigned char) * (*outDataLen));
+        convertRGB888ToA8(data, dataLen, *outData);
+        break;
     case PixelFormat::I8:
         *outDataLen = dataLen/3;
         *outData = (unsigned char*)malloc(sizeof(unsigned char) * (*outDataLen));
@@ -933,7 +963,7 @@ Texture2D::PixelFormat Texture2D::convertRGB888ToFormat(const unsigned char* dat
         // unsupported conversion or don't need to convert
         if (format != PixelFormat::AUTO && format != PixelFormat::RGB888)
         {
-            CCLOG("Can not convert image format PixelFormat::RGB888 to format ID:%d, we will use it's origin format PixelFormat::RGB888", format);
+            CCLOG("Can not convert image format PixelFormat::RGB888 to format ID:%d, we will use it's origin format PixelFormat::RGB888", static_cast<int>(format));
         }
 
         *outData = (unsigned char*)data;
@@ -987,7 +1017,7 @@ Texture2D::PixelFormat Texture2D::convertRGBA8888ToFormat(const unsigned char* d
         // unsupported conversion or don't need to convert
         if (format != PixelFormat::AUTO && format != PixelFormat::RGBA8888)
         {
-            CCLOG("Can not convert image format PixelFormat::RGBA8888 to format ID:%d, we will use it's origin format PixelFormat::RGBA8888", format);
+            CCLOG("Can not convert image format PixelFormat::RGBA8888 to format ID:%d, we will use it's origin format PixelFormat::RGBA8888", static_cast<int>(format));
         }
 
         *outData = (unsigned char*)data;
@@ -1036,7 +1066,7 @@ Texture2D::PixelFormat Texture2D::convertDataToFormat(const unsigned char* data,
     case PixelFormat::RGBA8888:
         return convertRGBA8888ToFormat(data, dataLen, format, outData, outDataLen);
     default:
-        CCLOG("unsupported conversion from format %d to format %d", originFormat, format);
+        CCLOG("unsupported conversion from format %d to format %d", static_cast<int>(originFormat), static_cast<int>(format));
         *outData = (unsigned char*)data;
         *outDataLen = dataLen;
         return originFormat;
@@ -1044,7 +1074,7 @@ Texture2D::PixelFormat Texture2D::convertDataToFormat(const unsigned char* data,
 }
 
 // implementation Texture2D (Text)
-bool Texture2D::initWithString(const char *text, const std::string& fontName, float fontSize, const Size& dimensions/* = Size(0, 0)*/, TextHAlignment hAlignment/* =  TextHAlignment::CENTER */, TextVAlignment vAlignment/* =  TextVAlignment::TOP */)
+bool Texture2D::initWithString(const char *text, const std::string& fontName, float fontSize, const Size& dimensions/* = Size(0, 0)*/, TextHAlignment hAlignment/* =  TextHAlignment::CENTER */, TextVAlignment vAlignment/* =  TextVAlignment::TOP */, bool enableWrap /* = false */, int overflow /* = 0 */)
 {
     FontDefinition tempDef;
     
@@ -1058,6 +1088,8 @@ bool Texture2D::initWithString(const char *text, const std::string& fontName, fl
     tempDef._alignment     = hAlignment;
     tempDef._vertAlignment = vAlignment;
     tempDef._fontFillColor = Color3B::WHITE;
+    tempDef._enableWrap    = enableWrap;
+    tempDef._overflow      = overflow;
 
     return initWithString(text, tempDef);
 }
@@ -1111,6 +1143,7 @@ bool Texture2D::initWithString(const char *text, const FontDefinition& textDefin
     auto textDef = textDefinition;
     auto contentScaleFactor = CC_CONTENT_SCALE_FACTOR();
     textDef._fontSize *= contentScaleFactor;
+    textDef._lineSpacing *= contentScaleFactor;
     textDef._dimensions.width *= contentScaleFactor;
     textDef._dimensions.height *= contentScaleFactor;
     textDef._stroke._strokeSize *= contentScaleFactor;
@@ -1304,45 +1337,72 @@ void Texture2D::setAntiAliasTexParameters()
 
 const char* Texture2D::getStringForFormat() const
 {
-	switch (_pixelFormat) 
-	{
-		case Texture2D::PixelFormat::RGBA8888:
-			return  "RGBA8888";
+    switch (_pixelFormat) 
+    {
+        case Texture2D::PixelFormat::RGBA8888:
+            return  "RGBA8888";
 
-		case Texture2D::PixelFormat::RGB888:
-			return  "RGB888";
+        case Texture2D::PixelFormat::RGB888:
+            return  "RGB888";
 
-		case Texture2D::PixelFormat::RGB565:
-			return  "RGB565";
+        case Texture2D::PixelFormat::RGB565:
+            return  "RGB565";
 
-		case Texture2D::PixelFormat::RGBA4444:
-			return  "RGBA4444";
+        case Texture2D::PixelFormat::RGBA4444:
+            return  "RGBA4444";
 
-		case Texture2D::PixelFormat::RGB5A1:
-			return  "RGB5A1";
+        case Texture2D::PixelFormat::RGB5A1:
+            return  "RGB5A1";
 
-		case Texture2D::PixelFormat::AI88:
-			return  "AI88";
+        case Texture2D::PixelFormat::AI88:
+            return  "AI88";
 
-		case Texture2D::PixelFormat::A8:
-			return  "A8";
+        case Texture2D::PixelFormat::A8:
+            return  "A8";
 
-		case Texture2D::PixelFormat::I8:
-			return  "I8";
+        case Texture2D::PixelFormat::I8:
+            return  "I8";
 
-		case Texture2D::PixelFormat::PVRTC4:
-			return  "PVRTC4";
+        case Texture2D::PixelFormat::PVRTC4:
+            return  "PVRTC4";
 
-		case Texture2D::PixelFormat::PVRTC2:
-			return  "PVRTC2";
+        case Texture2D::PixelFormat::PVRTC2:
+            return  "PVRTC2";
 
-		default:
-			CCASSERT(false , "unrecognized pixel format");
-			CCLOG("stringForFormat: %ld, cannot give useful result", (long)_pixelFormat);
-			break;
-	}
+        case Texture2D::PixelFormat::PVRTC2A:
+            return "PVRTC2A";
+        
+        case Texture2D::PixelFormat::PVRTC4A:
+            return "PVRTC4A";
+            
+        case Texture2D::PixelFormat::ETC:
+            return "ETC";
 
-	return  nullptr;
+        case Texture2D::PixelFormat::S3TC_DXT1:
+            return "S3TC_DXT1";
+            
+        case Texture2D::PixelFormat::S3TC_DXT3:
+            return "S3TC_DXT3";
+
+        case Texture2D::PixelFormat::S3TC_DXT5:
+            return "S3TC_DXT5";
+            
+        case Texture2D::PixelFormat::ATC_RGB:
+            return "ATC_RGB";
+
+        case Texture2D::PixelFormat::ATC_EXPLICIT_ALPHA:
+            return "ATC_EXPLICIT_ALPHA";
+
+        case Texture2D::PixelFormat::ATC_INTERPOLATED_ALPHA:
+            return "ATC_INTERPOLATED_ALPHA";
+            
+        default:
+            CCASSERT(false , "unrecognized pixel format");
+            CCLOG("stringForFormat: %ld, cannot give useful result", (long)_pixelFormat);
+            break;
+    }
+
+    return  nullptr;
 }
 
 //
@@ -1367,12 +1427,12 @@ unsigned int Texture2D::getBitsPerPixelForFormat(Texture2D::PixelFormat format) 
         return 0;
     }
     
-	return _pixelFormatInfoTables.at(format).bpp;
+    return _pixelFormatInfoTables.at(format).bpp;
 }
 
 unsigned int Texture2D::getBitsPerPixelForFormat() const
 {
-	return this->getBitsPerPixelForFormat(_pixelFormat);
+    return this->getBitsPerPixelForFormat(_pixelFormat);
 }
 
 const Texture2D::PixelFormatInfoMap& Texture2D::getPixelFormatInfoMap()
@@ -1384,7 +1444,7 @@ void Texture2D::addSpriteFrameCapInset(SpriteFrame* spritframe, const Rect& capI
 {
     if(nullptr == _ninePatchInfo)
     {
-        _ninePatchInfo = new NinePatchInfo;
+        _ninePatchInfo = new (std::nothrow) NinePatchInfo;
     }
     if(nullptr == spritframe)
     {
@@ -1436,4 +1496,20 @@ void Texture2D::removeSpriteFrameCapInset(SpriteFrame* spriteFrame)
     }
 }
 
+/// halx99 spec, ANDROID ETC1 ALPHA supports.
+void Texture2D::setAlphaTexture(Texture2D* alphaTexture)
+{
+    if (alphaTexture != nullptr)
+    {
+        alphaTexture->retain();
+        CC_SAFE_RELEASE(_alphaTexture);
+        _alphaTexture = alphaTexture;
+        _hasPremultipliedAlpha = true; // PremultipliedAlpha should be true.
+    }
+}
+
+Texture2D* Texture2D::getAlphaTexture() const
+{
+    return _alphaTexture;
+}
 NS_CC_END
