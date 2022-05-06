@@ -44,6 +44,7 @@ UIEditBox/UIEditBoxImpl-android.cpp \
 UIEditBox/UIEditBoxImpl-common.cpp \
 UILayoutComponent.cpp \
 UITabControl.cpp \
+UICameraView.cpp \
 
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/../editor-support
 
