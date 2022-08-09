@@ -5,3 +5,6 @@ cocos2dx中实现相机功能，目前已实现安卓端拍照，直接lua调用
 - cocos2dx 3.17.2 (lua)
 - AndroidStudio 2021.1.1
 - NDK r9
+
+# 效果预览
+![](https://raw.githubusercontent.com/TonyChenn/BlogPicture/master/2022/0218/icon.jpg)
